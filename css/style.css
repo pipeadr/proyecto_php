@@ -1,0 +1,90 @@
+*
+{
+margin: 0;
+padding: 0;
+
+}
+
+body
+{
+    /* background-image: url("https://i.imgur.com/B2q5Dxu.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #1D265B; */
+    background-image: radial-gradient(circle at 118.3% 68.3%, #6dbfff 0, #547faf 50%, #36455a 100%);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+    
+}
+
+div.padre
+{
+    padding-top:  50px;
+}
+h1
+{
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+div.ppl
+{
+    display: flex;
+    border: 1px solid #ffffff;
+    border-radius: 13px;
+    width: 50%;
+    margin: 0 auto;
+}
+div.hijo
+{
+ padding: 60px;
+}
+
+label.login
+{
+    color: #ffffff;
+    font-size: 22px;
+}
+
+input.login
+{
+  margin-top: 15px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+input
+{
+    margin-top: 20px;
+    color: #fff;  
+    background-color: transparent;
+    padding: 15px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.6s ease;
+}
+
+input:hover
+{
+    background-color: #fff;
+    color: RGB(85, 127, 175);
+    border-radius: 0px;
+    transition: 0.1;
+    transition: all 0.6s ease;
+    
+}
+
+/*Text Area*/
+textarea {
+    resize: none;
+    width: 300px;
+    height: 220px;
+}
