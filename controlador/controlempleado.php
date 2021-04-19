@@ -29,7 +29,7 @@ class controlempleado
         $fkAREA=$this->objEmpleado->getfkAREA();
         $PASSWORD=$this->objEmpleado->getPASSWORD(); 
 		//$objControlConexion = new controlconexion();
-		$db= new ControlConexion();
+		$db= new ControlConexion(); //eror
 		$db->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "insert into empleado values('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."',".$X.",".$Y.",'".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
 		//$comandoSql = "INSERT INTO empleado(IDEMPLEADO,NOMBRE,FOTO,HOJAVIDA,TELEFONO,EMAIL,DIRECCION,X,Y,fkEMPLE_JEFE,fkAREA,PASSWORD) VALUES('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."','".$X."','".$Y."','".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";

@@ -1,6 +1,7 @@
 <?php
 include '../../controlador/controlempleado.php';
 include '../../modelo/empleado/empleado.php';
+include '../../controlador/controlconexion.php';
 
 $ID = $_POST['txtID'];
 $name = $_POST['txtNombre'];
@@ -69,7 +70,9 @@ $dire = $_POST['direccion'];
 $jefe = $_POST['select_jefe'];
 $area = $_POST['select_area'];
 $contra = $_POST['password_emple'];
-$objEmpleado = new empleado($ID, $name, $path_img, $path_pdf, $tel, $mail, $dire, 'hola', 'Hola', $jefe, $area, $contra);
+$X = 2;
+$Y = 3;
+$objEmpleado = new empleado($ID, $name, $path_img, $path_pdf, $tel, $mail, $dire, $X, $Y, $jefe, $area, $contra);
 $objControlempleados = new controlempleado($objEmpleado);
 $r = $objControlempleados->guardar();
 
