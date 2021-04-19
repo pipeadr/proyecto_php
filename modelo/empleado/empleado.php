@@ -1,20 +1,21 @@
 <?php
 	
 	class empleado
-	{
-                var $NOMBRE;
-                var $FOTO;
-                var $HOJAVIDA;
-                var $TELEFONO;
-                var $EMAIL;
-                var $DIRECCION;
-                var $X;
-                var $Y;                 
-                var $fkEMPLE_JEFE;
-                var $fkAREA;
-                var $PASSWORD;
+	{ 
+        var $IDEMPLEADO;
+		var $NOMBRE;
+        var $FOTO;
+        var $HOJAVIDA;
+        var $TELEFONO;
+        var $EMAIL;
+        var $DIRECCION;
+        var $X;
+        var $Y;                 
+        var $fkEMPLE_JEFE;
+        var $fkAREA;
+        var $PASSWORD;
 
-		function __construct($NOMBRE,$FOTO,$HOJAVIDA,$TELEFONO,$EMAIL,$DIRECCION,$X,$Y,$fkEMPLE_JEFE,$fkAREA,$PASSWORD)
+		function __construct($IDEMPLEADO,$NOMBRE,$FOTO,$HOJAVIDA,$TELEFONO,$EMAIL,$DIRECCION,$X,$Y,$fkEMPLE_JEFE,$fkAREA,$PASSWORD)
 		{
 
            $this->NOMBRE=$NOMBRE;
@@ -33,7 +34,7 @@
 		function setIDEMPLEADO($IDEMPLEADO){
 			$this->IDEMPLEADO=$IDEMPLEADO;
 		}
-		function getIDEMPLEADO(){
+		function getIDEMPLEADO() {
 			return $this->IDEMPLEADO;
 		}
                 function setNOMBRE($NOMBRE){

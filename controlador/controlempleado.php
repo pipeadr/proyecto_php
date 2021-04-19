@@ -5,7 +5,7 @@
    -En PHP $nombreObjeto = new nombreClase(Argumentos del constructor)
    -Para llamar un metodo se escribe $nobreObjeto->nombreMetodo(Argumentos)
  */
-class ControlEmpleado
+class controlempleado
 {
 	var $objEmpleado;
 
@@ -28,11 +28,24 @@ class ControlEmpleado
         $fkEMPLE_JEFE=$this->objEmpleado->getfkEMPLE_JEFE();
         $fkAREA=$this->objEmpleado->getfkAREA();
         $PASSWORD=$this->objEmpleado->getPASSWORD(); 
-		$objControlConexion = new ControlConexion();
-		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
+		//$objControlConexion = new controlconexion();
+		$db= new ControlConexion();
+		$db->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "insert into empleado values('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."',".$X.",".$Y.",'".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
-		$objControlConexion->cerrarBd();
+		//$comandoSql = "INSERT INTO empleado(IDEMPLEADO,NOMBRE,FOTO,HOJAVIDA,TELEFONO,EMAIL,DIRECCION,X,Y,fkEMPLE_JEFE,fkAREA,PASSWORD) VALUES('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."','".$X."','".$Y."','".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
+		
+		//$objControlConexion->ejecutarComandoSql($comandoSql);
+		if ( $db->ejecutarComandoSql($comandoSql) )
+		{
+			//$mData=array ('msg'=>'guardo Correctamente');	
+			$mData = true;
+		}
+		else {
+			//$mData=array ('error'=>'Ocurrió un error ...');
+			$mData = false;	
+		}
+		$db->cerrarBd();
+		return $mData; 
 	}
 
 	function consultar()

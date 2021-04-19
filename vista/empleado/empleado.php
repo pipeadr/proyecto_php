@@ -86,7 +86,7 @@ $db->cerrarBd();
      <br> <br>
     <hr>
     <h3>Ingresar Nuevos Empleados</h3> 
-      <form method="post"  action="insertar_emp.php">
+      <form method="post"  action="insertar_emp.php" enctype="multipart/form-data">
           <table>
           <tr>
             <td>ID:</td>
@@ -98,11 +98,11 @@ $db->cerrarBd();
            </tr>
            <tr>
             <td>Foto:</td>
-            <td><input type="file" name="foto_em"></td>
+            <td><input type="file" name="foto_em" accept="image/*"></td>
            </tr>
            <tr>
             <td>HV:</td>
-            <td><input type="file" name="HV_em"></td>
+            <td><input type="file" name="HV_em" accept="application/pdf"></td>
            </tr>
            <tr>
             <td>Télefono:</td>
@@ -111,11 +111,38 @@ $db->cerrarBd();
            <tr>
             <td>email:</td>
             <td><input type="email" name="mail" id=""></td>
-            
            </tr>
-
+           <tr>
+            <td>Dirección:</td>
+            <td><input type="text" name="direccion" id=""></td>
+           </tr>
+            <tr>
+            <td>Jefe:</td>
+            <td>
+            <select  name="select_jefe" id="">
+            <option value ="0">Seleccionar Jefe</option>
+            <?php foreach($registros as $registro) {  ?>
+            <option name="Areas_" value ="<?php echo $registro["IDEMPLEADO"];?> "><?php echo $registro["NOMBRE"];?></option>  
+            <?php } ?>
+            </select></td> 
+            </tr>
+            <tr>
+            <td>Area:</td>
+            <td>
+            <select  name="select_area" id="">
+            <option value ="0">Seleccionar Area</option>
+            <?php foreach($cnslta_areas  as $cnslta_area) {  ?>
+            <option name="Areas_" value ="<?php echo $cnslta_area["IDAREA"]; ?> "><?php echo $cnslta_area["NOMBRE"]; ?></option>  
+            <?php } ?>
+            </select></td> 
+            </tr>
+            <tr>
+            <td>Contraseña:</td>
+            <td><input type="password" name="password_emple" id=""></td>
+           </tr>
            
-           <input type="hidden" name="oculto" value="1">
+           
+           <!-- <input type="hidden" name="oculto" value="1"> -->
             <tr>
               <td><input type="reset"></td>
               <td><input type="submit" value="Ingresar Empleado"></td>
