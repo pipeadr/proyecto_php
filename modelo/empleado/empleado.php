@@ -17,7 +17,7 @@
 
 		function __construct($IDEMPLEADO,$NOMBRE,$FOTO,$HOJAVIDA,$TELEFONO,$EMAIL,$DIRECCION,$X,$Y,$fkEMPLE_JEFE,$fkAREA,$PASSWORD)
 		{
-
+           $this->IDEMPLEADO=$IDEMPLEADO;
            $this->NOMBRE=$NOMBRE;
            $this->FOTO=$FOTO;
            $this->HOJAVIDA=$HOJAVIDA;
@@ -36,6 +36,7 @@
 		}
 		function getIDEMPLEADO() {
 			return $this->IDEMPLEADO;
+			
 		}
                 function setNOMBRE($NOMBRE){
 			$this->NOMBRE=$NOMBRE;

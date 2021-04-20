@@ -31,10 +31,12 @@ class controlempleado
 		//$objControlConexion = new controlconexion();
 		$db= new ControlConexion(); //eror
 		$db->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "insert into empleado values('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."',".$X.",".$Y.",'".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
+		var_dump($this->objEmpleado->getIDEMPLEADO());
+		//$comandoSql = "insert into empleado values('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."',".$X.",".$Y.",'".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
 		//$comandoSql = "INSERT INTO empleado(IDEMPLEADO,NOMBRE,FOTO,HOJAVIDA,TELEFONO,EMAIL,DIRECCION,X,Y,fkEMPLE_JEFE,fkAREA,PASSWORD) VALUES('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."','".$X."','".$Y."','".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
-		
+		$comandoSql = "insert into empleado values('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."',".$X.",".$Y.",'".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
 		//$objControlConexion->ejecutarComandoSql($comandoSql);
+		var_dump($comandoSql);
 		if ( $db->ejecutarComandoSql($comandoSql) )
 		{
 			//$mData=array ('msg'=>'guardo Correctamente');	
@@ -81,7 +83,17 @@ class controlempleado
 		$objControlConexion->cerrarBd();
 		return $this->objEmpleado;
 	}
-
+	function consultar_edi()
+	{
+		$IDEMPLEADO=$this->objEmpleado->getIDEMPLEADO();		
+		$objControlConexion = new ControlConexion();
+		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
+		$comandoSql = "select * from empleado where IDEMPLEADO = '".$IDEMPLEADO."'";
+		$rs = $objControlConexion->ejecutarSelect($comandoSql);
+		$registro = $rs->fetch_all(MYSQLI_ASSOC); //Asigna los datos a la variable $registro
+		$objControlConexion->cerrarBd();
+		return $this->registro;
+	}
 	function modificar()
 	{
 		$IDEMPLEADO=$this->objEmpleado->getIDEMPLEADO();

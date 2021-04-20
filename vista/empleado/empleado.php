@@ -36,8 +36,8 @@ $db->cerrarBd();
      <tr>
      <td>ID</td>
      <td>Nombre</td>
-     <!-- <td>Foto</td>
-     <td>HV</td> -->
+     <td>Foto</td>
+     <td>HV</td>
      <td>telefono</td>
      <td>Correo</td>
      <td>Dirrección</td>
@@ -51,7 +51,8 @@ $db->cerrarBd();
      <tr>
       <td><?php echo $registro["IDEMPLEADO"];  ?></td>
       <td><?php echo $registro["NOMBRE"];  ?></td>
-      
+      <td><a href="<?php echo $registro["FOTO"];?>">Ver Foto</a></td>
+      <td><a href="<?php echo $registro["HOJAVIDA"];?>">Ver HV</a></td>
       <td><?php echo $registro["TELEFONO"];  ?></td>
       <td><?php echo $registro["EMAIL"];  ?></td>
       <td><?php echo $registro["DIRECCION"];  ?></td>
