@@ -51,8 +51,8 @@ $db->cerrarBd();
      <tr>
       <td><?php echo $registro["IDEMPLEADO"];  ?></td>
       <td><?php echo $registro["NOMBRE"];  ?></td>
-      <td><a href="<?php echo $registro["FOTO"];?>">Ver Foto</a></td>
-      <td><a href="<?php echo $registro["HOJAVIDA"];?>">Ver HV</a></td>
+      <td><a target="_blank" rel="noopener noreferrer" href="<?php echo $registro["FOTO"];?>">Ver Foto</a></td>
+      <td><a target="_blank" rel="noopener noreferrer" href="<?php echo $registro["HOJAVIDA"];?>">Ver HV</a></td>
       <td><?php echo $registro["TELEFONO"];  ?></td>
       <td><?php echo $registro["EMAIL"];  ?></td>
       <td><?php echo $registro["DIRECCION"];  ?></td>
@@ -78,7 +78,7 @@ $db->cerrarBd();
         ?>
       </td>
       <td><a href="editar_empleado.php?id=<?php echo $registro["IDEMPLEADO"];?>"><i class="fas fa-edit"></i></a></td>
-      <td><a href="eliminar_empleado.php?id=<?php $registro["IDEMPLEADO"];?>"><i class="fas fa-trash-alt"></i></a></td>
+      <td><a href="eliminar_empleado.php?id=<?php echo $registro["IDEMPLEADO"];?>"><i class="fas fa-trash-alt"></i></a></td>
      </tr>
      <?php }?>
      </table>
@@ -123,7 +123,7 @@ $db->cerrarBd();
             <select  name="select_jefe" id="">
             <option value ="0">Seleccionar Jefe</option>
             <?php foreach($registros as $registro) {  ?>
-            <option name="Areas_" value ="<?php echo $registro["IDEMPLEADO"];?> "><?php echo $registro["NOMBRE"];?></option>  
+            <option name="Areas_" value ="<?php echo $registro["IDEMPLEADO"];?>"><?php echo $registro["NOMBRE"];?></option>  
             <?php } ?>
             </select></td> 
             </tr>
@@ -133,7 +133,7 @@ $db->cerrarBd();
             <select  name="select_area" id="">
             <option value ="0">Seleccionar Area</option>
             <?php foreach($cnslta_areas  as $cnslta_area) {  ?>
-            <option name="Areas_" value ="<?php echo $cnslta_area["IDAREA"]; ?> "><?php echo $cnslta_area["NOMBRE"]; ?></option>  
+            <option name="Areas_" value ="<?php echo $cnslta_area["IDAREA"];?>"><?php echo $cnslta_area["NOMBRE"]; ?></option>  
             <?php } ?>
             </select></td> 
             </tr>

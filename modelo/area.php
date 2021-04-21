@@ -4,13 +4,13 @@
 	{
 		var $IDAREA;
 		var $NOMBRE;
-                var $FKEMPLE;
+        var $FKEMPLE;
 		
 		function __construct($IDAREA,$NOMBRE,$FKEMPLE)
 		{
 			$this->IDAREA=$IDAREA;
 			$this->NOMBRE=$NOMBRE;
-                        $this->FKEMPLE=$FKEMPLE;
+            $this->FKEMPLE=$FKEMPLE;
 			
 		}
 

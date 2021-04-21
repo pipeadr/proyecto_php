@@ -31,12 +31,12 @@ class controlempleado
 		//$objControlConexion = new controlconexion();
 		$db= new ControlConexion(); //eror
 		$db->abrirBd("localhost","root","","mesa_ayuda");
-		var_dump($this->objEmpleado->getIDEMPLEADO());
+		//var_dump($this->objEmpleado->getIDEMPLEADO());
 		//$comandoSql = "insert into empleado values('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."',".$X.",".$Y.",'".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
 		//$comandoSql = "INSERT INTO empleado(IDEMPLEADO,NOMBRE,FOTO,HOJAVIDA,TELEFONO,EMAIL,DIRECCION,X,Y,fkEMPLE_JEFE,fkAREA,PASSWORD) VALUES('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."','".$X."','".$Y."','".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
 		$comandoSql = "insert into empleado values('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."',".$X.",".$Y.",'".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
 		//$objControlConexion->ejecutarComandoSql($comandoSql);
-		var_dump($comandoSql);
+		//var_dump($comandoSql);
 		if ( $db->ejecutarComandoSql($comandoSql) )
 		{
 			//$mData=array ('msg'=>'guardo Correctamente');	
@@ -92,13 +92,13 @@ class controlempleado
 		$rs = $objControlConexion->ejecutarSelect($comandoSql);
 		$registro = $rs->fetch_all(MYSQLI_ASSOC); //Asigna los datos a la variable $registro
 		$objControlConexion->cerrarBd();
-		return $this->registro;
+		return $registro;
 	}
 	function modificar()
 	{
 		$IDEMPLEADO=$this->objEmpleado->getIDEMPLEADO();
 		$NOMBRE=$this->objEmpleado->getNOMBRE();
-                $FOTO=$this->objEmpleado->getFOTO();
+        $FOTO=$this->objEmpleado->getFOTO();
                 $HOJAVIDA=$this->objEmpleado->getHOJAVIDA();
                 $TELEFONO=$this->objEmpleado->getTELEFONO();
                 $EMAIL=$this->objEmpleado->getEMAIL();
@@ -110,9 +110,20 @@ class controlempleado
                 $PASSWORD=$this->objEmpleado->getPASSWORD();
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "update empleado set NOMBRE = '".$NOMBRE."', FOTO = '".$FOTO."', HOJAVIDA = '".$HOJAVIDA."', TELEFONO = '".$TELEFONO."', EMAIL = '".$EMAIL."', DIRECCION = '".$DIRECCION."', X = '".$X."', Y = '".$Y."', fkEMPLE_JEFE = '".$fkEMPLE_JEFE."', fkAREA = '".$fkAREA."', PASSWORD = '".$PASSWORD."' where IDEMPLEADO = '".$IDEMPLEADO."'";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+		$comandoSql = "update empleado set IDEMPLEADO = '".$IDEMPLEADO."', NOMBRE = '".$NOMBRE."', FOTO = '".$FOTO."', HOJAVIDA = '".$HOJAVIDA."', TELEFONO = '".$TELEFONO."', EMAIL = '".$EMAIL."', DIRECCION = '".$DIRECCION."', X = '".$X."', Y = '".$Y."', fkEMPLE_JEFE = '".$fkEMPLE_JEFE."', fkAREA = '".$fkAREA."', PASSWORD = '".$PASSWORD."' where IDEMPLEADO = '".$IDEMPLEADO."'";
+		//var_dump($comandoSql);
+		//$objControlConexion->ejecutarComandoSql($comandoSql);
+		if ( $objControlConexion->ejecutarComandoSql($comandoSql) )
+		{
+			//$mData=array ('msg'=>'guardo Correctamente');	
+			$mData = true;
+		}
+		else {
+			//$mData=array ('error'=>'Ocurrió un error ...');
+			$mData = false;	
+		}
 		$objControlConexion->cerrarBd();
+		return $mData; 
 	}
 
 	function borrar()
@@ -121,8 +132,19 @@ class controlempleado
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "delete from empleado where IDEMPLEADO = '".$IDEMPLEADO."'";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+		//$objControlConexion->ejecutarComandoSql($comandoSql);
+		//$objControlConexion->cerrarBd();
+		if ( $objControlConexion->ejecutarComandoSql($comandoSql) )
+		{
+			//$mData=array ('msg'=>'guardo Correctamente');	
+			$mData = true;
+		}
+		else {
+			//$mData=array ('error'=>'Ocurrió un error ...');
+			$mData = false;	
+		}
 		$objControlConexion->cerrarBd();
+		return $mData; 
 	}
       
 }
