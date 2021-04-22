@@ -35,6 +35,7 @@ $db->cerrarBd();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php foreach($rs as $r) {?>
     <title>Editar empleado <?php echo $r["NOMBRE"]; } ?></title>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
  <center>

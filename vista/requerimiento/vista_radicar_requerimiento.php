@@ -45,21 +45,24 @@ if(($r_dr)  && ($r))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Requerimiento</title>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-
-<p>El Estado del requerimiento es el siguiente: <?php echo $rpesta_clta; ?></p> 
-
-<form method="post" action="radicarRequerimiento.php"> 
-    <input type="submit" name="btn" value="Registrar Nuevo Requerimiento">
+<?php include("../../header.php");?>
+<div class="home">
+  <h3 class="re">El Estado del requerimiento es el siguiente: <?php echo $rpesta_clta; ?></h3> 
+    
+  <div class="padre">
+  <form method="post" action="radicarRequerimiento.php"> 
+    <input class="botones"  type="submit" name="btn" value="Registrar Nuevo Requerimiento">
     <input type="hidden" name="Id_empleado"  value="<?php echo "$ID_EMPLEADO"; ?>">
-      </form>
-
-      <br>
-      <br>
- 
+      </form> 
       <form method="post" action=""> 
-    <input type="submit" name="btn" value="Cerrar Sección">
+    <input class="botones"  type="submit" name="btn" value="Cerrar Sección">
       </form>
+  </div>
+ 
+</div>
+
 </body>
 </html>

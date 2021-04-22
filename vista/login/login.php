@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<div class="padre">
+<div class="padre-login">
    <h1>Iniciar Sección</h1>
      <div class="formulario_login">
 	 <form action="vista_login.php" method="POST">
@@ -26,13 +26,13 @@
 	  </div>
 	 </div>
   <center>
-  <input type="submit" name="btnEnviar">
+  <input class="btn-enivar" type="submit" name="btnEnviar">
   </center>
 	
 		</form>
 
 	 </div>
-
+	 <script src="https://kit.fontawesome.com/176c817b83.js" crossorigin="anonymous"></script>
 </div>
 </body>
 </html>

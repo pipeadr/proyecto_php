@@ -72,6 +72,15 @@ $area = $_POST['select_area'];
 $contra = $_POST['password_emple'];
 $X = 2;
 $Y = 3;
+// var_dump($ID);
+// var_dump($name);
+// var_dump($path_img);
+// var_dump($path_pdf);
+// var_dump($tel);
+// var_dump($dire);
+// var_dump($jefe);
+// var_dump($area);
+// var_dump($contra);
 $objEmpleado = new empleado($ID, $name, $path_img, $path_pdf, $tel, $mail, $dire, $X, $Y, $jefe, $area, $contra);
 $objControlempleados = new controlempleado($objEmpleado);
 $r = $objControlempleados->guardar();
@@ -98,11 +107,19 @@ if($r)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empleados</title>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
+<div class="home">
+  <center>
+  <h1>Bienvenido</h1>
 
-<h1>Bienvenido</h1>
+ <p>El estado al crear el empleado es: <?php echo $rpesta_clta; ?></p>
+ <a href="empleado.php">Volver</a>
 
-<p>El estado al crear el empleado es: <?php echo $rpesta_clta; ?></p>
+  </center>
+
+  </div>
+
 </body>
 </html>

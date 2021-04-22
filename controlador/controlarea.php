@@ -59,7 +59,7 @@ class controlarea
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "update area set IDAREA = '".$ID."', NOMBRE = '".$NOMBRE."', FKEMPLE = '".$LIDER."' where IDAREA = '".$ID."'";
-		var_dump($comandoSql);
+		//var_dump($comandoSql);
 		//$objControlConexion->ejecutarComandoSql($comandoSql);
 		if ( $objControlConexion->ejecutarComandoSql($comandoSql) )
 		{

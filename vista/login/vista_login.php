@@ -36,23 +36,28 @@ $cnsltas_lgn = $rs4->fetch_array(MYSQLI_BOTH);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bienvenido <?php echo "$name"; ?></title>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
- <h1>Bienvenido <?php echo "$name"; ?></h1>
-  <h3>¿Que desea hacer?</h3>
+<?php include("../../header.php");?>
+ <div class="home">
+ <h1 class="title-home">Bienvenido <?php echo "$name"; ?></h1>
+  <h3 class="sub-title">¿Que desea hacer?</h3>
    
-    <form method="post" action="../requerimiento/radicarRequerimiento.php"> 
-    <input type="submit" name="btn" value="Registrar Requerimiento">
-    <input type="hidden" name="Id_empleado"  value="<?php echo "$ID_EMPLEADO"; ?>">
+    <div class="padre">
+    <form class="hijo" method="post" action="../requerimiento/radicarRequerimiento.php"> 
+    <input class="botones"  type="submit" name="btn" value="Registrar Requerimiento">
+    <input class="botones" type="hidden" name="Id_empleado"  value="<?php echo "$ID_EMPLEADO"; ?>">
       </form>
 
-      <br>
-      <br>
-     <a href="../empleado/empleado.php">Editar Empleados</a> <br>
-     <a href="../area/area.php">Editar Áreas</a>
-      <form method="post" action=""> 
-    <input type="submit" name="btn" value="Cerrar Sección">
+     <a class="botones" href="../empleado/empleado.php">Editar Empleados</a> <br>
+     <a class="botones" href="../area/area.php">Editar Áreas</a>
+      <form method="post" action="" class="hijo"> 
+    <input class="botones"  type="submit" name="btn" value="Cerrar Sección">
       </form>
+    </div>
+
+ </div>
 </body>
 </html>

@@ -23,31 +23,50 @@ $db->cerrarBd();
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-     <h1>Registrar Requerimiento</h1>
-     <div class="formulario_login">
+<?php include("../../header.php");?>
+   <div class="requerimiento">
+     <h1 class="title-home">Registrar Requerimiento</h1>
+     
      <form method="post" action="vista_radicar_requerimiento.php">  
-      <label for="">Seleccione el Área</label> <br>
+
+      <!--<div class="hijo-form">-->
+      <!--<label for="">Seleccione el Área</label>-->
+     
+      <div class="elmto-1">
       <select  name="cbx_area" id="">
       <option value ="0">Seleccionar Area</option>
       <?php foreach($cnslta_areas as $cnslta_area) {  ?>
       <option name="Areas_" value ="<?php echo $cnslta_area["IDAREA"] ?> "><?php echo $cnslta_area["NOMBRE"]?></option>  
       <?php } ?>
-      </select> <br>
-      <label for="">Fecha</label> <br>
+      </select>
+      
       <?php   
         date_default_timezone_set('America/Bogota');
         $fecha_actial = date("Y-m-d H:i:s");
       ?>
-      <input type="datetime" name="txtFECHA"   value="<?php echo $fecha_actial; ?>" readonly>
-      <br>
-      <label for="">Ingrese su observación	</label> <br>
+      <div class="elmto-2">
+        <p>Fecha Actual:</p>
+        <input type="datetime" name="txtFECHA"   value="<?php echo $fecha_actial; ?>" readonly>
+      </div>
+      </div>
+   
+      <div class="elmto-3">
+      
       <textarea name="txtOBSERVACION"   id="" placeholder="Ingrese su observación"  ></textarea>
-      <br>
+      </div>
+
+
       <input type="hidden" name="Id_empleado"  value="<?php echo "$ID_EMPLEADO"; ?>">
       <input type="hidden" name="Estado_requisito"  value="1">
-      <input type="submit" value="Radicar"> <br>
-      <input type="reset" value="Limpiar">
+
+      <div class="elmto-4">
+      <input class="botones" type="submit" value="Radicar"> <br>
+      <input class="botones" type="reset" value="Limpiar">
+      </div>
+       
      </form>
-     </div>
+     
+      </div>
+      
 </body>
 </html>

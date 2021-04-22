@@ -23,11 +23,13 @@ $db->cerrarBd();
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Areas</title>
+     <link rel="stylesheet" href="../../css/style.css">
  </head>
  <body>
  <center>
      <h1>Áreas</h1>
-     <table>
+     <div class="table_re">
+     <table class ="tabla_empleados">
      <tr>
      <td>ID</td>
      <td>Nombre Área</td>
@@ -55,6 +57,7 @@ $db->cerrarBd();
       </tr>
      <?php }?>    
      </table>
+     </div>
      <hr>
     <h3>Ingresar una nueva área</h3>
     <form method="post"  action="insertar_area.php">
@@ -66,11 +69,11 @@ $db->cerrarBd();
            <tr>
             <td>Nombre:</td>
             <td><input type="text" name="txtname"></td>
-           </tr>
-           <tr>
+           </tr> 
+           <tr sty>
             <td></td>
                <td>
-                   <select name="select_lider" id="">
+                   <select style="margin-top: 20px;" name="select_lider" id="">
                    <option value ="0">Seleccionar Jefe</option>
                    <?php
             foreach($empleados as $empleado) {  ?>
@@ -80,8 +83,8 @@ $db->cerrarBd();
                </td>
            </tr>
            <tr>
-              <td><input type="reset"></td>
-              <td><input type="submit" value="Ingresar Empleado"></td>
+              <td><input class="botones" type="reset"></td>
+              <td><input class="botones" type="submit" value="Ingresar Empleado"></td>
             </tr>
            
         </table>

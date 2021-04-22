@@ -28,24 +28,30 @@ $db->cerrarBd();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empleados</title>
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
     <center>
      <h1>Empleados</h1>
-     <table>
+     <div class="table_re">
+     <table class ="tabla_empleados">
+     <thead>
      <tr>
-     <td>ID</td>
-     <td>Nombre</td>
-     <td>Foto</td>
-     <td>HV</td>
-     <td>telefono</td>
-     <td>Correo</td>
-     <td>Dirrección</td>
-     <td>X</td>
-     <td>Y</td>
-     <td>Jefe</td>
-     <td>Area</td>
+     <th>ID</th>
+     <th>Nombre</th>
+     <th>Foto</th>
+     <th>HV</th>
+     <th>telefono</th>
+     <th>Correo</th>
+     <th>Dirrección</th>
+     <th>X</th>
+     <th>Y</th>
+     <th>Jefe</th>
+     <th>Area</th>
+     <th>editar</th>
+     <th>eliminar</th>
      </tr>
+     </thead>
      <?php foreach($registros as $registro) {?>
      
      <tr>
@@ -82,73 +88,67 @@ $db->cerrarBd();
      </tr>
      <?php }?>
      </table>
-
+     </div>   
      <!-- Inicio insert -->
-     <br> <br>
+     
     <hr>
-    <h3>Ingresar Nuevos Empleados</h3> 
+    <h3 class="title-em">Ingresar Nuevos Empleados</h3> 
       <form method="post"  action="insertar_emp.php" enctype="multipart/form-data">
-          <table>
-          <tr>
-            <td>ID:</td>
-            <td><input type="text" name="txtID"></td>
-           </tr>
-           <tr>
-            <td>Nombre:</td>
-            <td><input type="text" name="txtNombre"></td>
-           </tr>
-           <tr>
-            <td>Foto:</td>
-            <td><input type="file" name="foto_em" accept="image/*"></td>
-           </tr>
-           <tr>
-            <td>HV:</td>
-            <td><input type="file" name="HV_em" accept="application/pdf"></td>
-           </tr>
-           <tr>
-            <td>Télefono:</td>
-            <td><input type="text" name="txtTelefono"></td>
-           </tr>
-           <tr>
-            <td>email:</td>
-            <td><input type="email" name="mail" id=""></td>
-           </tr>
-           <tr>
-            <td>Dirección:</td>
-            <td><input type="text" name="direccion" id=""></td>
-           </tr>
-            <tr>
-            <td>Jefe:</td>
-            <td>
-            <select  name="select_jefe" id="">
+
+      <div class="home">
+          <div class="elmto-emple">
+          <p class="p-emple">ID:</p>
+          <input class="btn_empl" type="text" name="txtID">
+          <p class="p-emple">Nombre:</p>
+          <input class="btn_empl" type="text" name="txtNombre">
+          </div>   <!--div elmto-emple-->
+
+          <div class="elmto-emple">
+          <p class="p-emple">Foto:</p>
+          <input type="file" name="foto_em" accept="image/*">
+          <p class="p-emple">HV:</p>
+          <input type="file" name="HV_em" accept="application/pdf">
+          </div>   <!--div elmto-emple-->
+
+          <div class="elmto-emple">
+          <p class="p-emple">Télefono:</p>
+          <input class="btn_empl" type="text" name="txtTelefono">
+          <p class="p-emple">Email:</p>
+          <input class="btn_empl" type="email" name="mail" id="">
+          </div>   <!--div elmto-emple-->
+
+          <div class="elmto-emple">
+          <p class="p-emple">Dirección:</p>
+          <input class="btn_empl"  type="text" name="direccion" id="">
+          <p class="p-emple">Jefe:</p>
+          <select  name="select_jefe" id="">
             <option value ="0">Seleccionar Jefe</option>
             <?php foreach($registros as $registro) {  ?>
-            <option name="Areas_" value ="<?php echo $registro["IDEMPLEADO"];?>"><?php echo $registro["NOMBRE"];?></option>  
+            <option name="select_jefe" value ="<?php echo $registro["IDEMPLEADO"];?>"><?php echo $registro["NOMBRE"];?></option>  
             <?php } ?>
-            </select></td> 
-            </tr>
-            <tr>
-            <td>Area:</td>
-            <td>
-            <select  name="select_area" id="">
+            </select>
+          </div>   <!--div elmto-emple-->
+
+          <div class="elmto-emple">
+          <p class="p-emple">Área:</p>
+          <select  name="select_area" id="">
             <option value ="0">Seleccionar Area</option>
             <?php foreach($cnslta_areas  as $cnslta_area) {  ?>
-            <option name="Areas_" value ="<?php echo $cnslta_area["IDAREA"];?>"><?php echo $cnslta_area["NOMBRE"]; ?></option>  
+            <option name="select_area" value ="<?php echo $cnslta_area["IDAREA"];?>"><?php echo $cnslta_area["NOMBRE"]; ?></option>  
             <?php } ?>
-            </select></td> 
-            </tr>
-            <tr>
-            <td>Contraseña:</td>
-            <td><input type="password" name="password_emple" id=""></td>
-           </tr>
-           
-           
+            </select>
+          <p class="p-emple">Contraseña:</p>
+          <input class="btn_empl" type="password" name="password_emple" id="">
+          </div>   <!--div elmto-emple-->
+
+          <table>           
            <!-- <input type="hidden" name="oculto" value="1"> -->
             <tr>
-              <td><input type="reset"></td>
-              <td><input type="submit" value="Ingresar Empleado"></td>
+              <td><input class="botones"  type="reset"></td>
+              <td><input class="botones" type="submit" value="Ingresar Empleado"></td>
             </tr>
           </table>
+       </div>
       </form>
 
     <!-- fin insert -->
