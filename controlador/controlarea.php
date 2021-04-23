@@ -52,7 +52,7 @@ class controlarea
 	}
 	
 	function modificar()
-	{
+	{ 
         $ID=$this->objEmpleado->getIDAREA();
         $NOMBRE=$this->objEmpleado->getNOMBRE();
         $LIDER=$this->objEmpleado->getFKEMPLE();
