@@ -98,28 +98,28 @@ $db->cerrarBd();
       <div class="home">
           <div class="elmto-emple">
           <p class="p-emple">ID:</p>
-          <input class="btn_empl" type="text" name="txtID">
+          <input class="btn_empl" type="text" name="txtID" required="">
           <p class="p-emple">Nombre:</p>
-          <input class="btn_empl" type="text" name="txtNombre">
+          <input class="btn_empl" type="text" name="txtNombre" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" title="Ingrese su nombre completo, con apellidos">
           </div>   <!--div elmto-emple-->
 
           <div class="elmto-emple">
           <p class="p-emple">Foto:</p>
-          <input type="file" name="foto_em" accept="image/*">
+          <input type="file" name="foto_em" accept="image/*" required="" x-moz-errormessage="Por favor, ingrese un archivo válido.">
           <p class="p-emple">HV:</p>
-          <input type="file" name="HV_em" accept="application/pdf">
+          <input type="file" name="HV_em" accept="application/pdf" required="" x-moz-errormessage="Por favor, ingrese un archivo válido.">
           </div>   <!--div elmto-emple-->
 
           <div class="elmto-emple">
           <p class="p-emple">Télefono:</p>
-          <input class="btn_empl" type="text" name="txtTelefono">
+          <input class="btn_empl" type="tel" name="txtTelefono">
           <p class="p-emple">Email:</p>
-          <input class="btn_empl" type="email" name="mail" id="">
+          <input class="btn_empl" type="email" name="mail" id="" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" size="30" x-moz-errormessage="Por favor, especifique una dirección de correo válida." required="">
           </div>   <!--div elmto-emple-->
 
           <div class="elmto-emple">
           <p class="p-emple">Dirección:</p>
-          <input class="btn_empl"  type="text" name="direccion" id="">
+          <input class="btn_empl"  type="text" name="direccion" id="" title="Ingrese la dirección de su ubicación inluyendo múnicipio"> >
           <p class="p-emple">Jefe:</p>
           <select  name="select_jefe" id="">
             <option value ="0">Seleccionar Jefe</option>
@@ -134,11 +134,11 @@ $db->cerrarBd();
           <select  name="select_area" id="">
             <option value ="0">Seleccionar Area</option>
             <?php foreach($cnslta_areas  as $cnslta_area) {  ?>
-            <option name="select_area" value ="<?php echo $cnslta_area["IDAREA"];?>"><?php echo $cnslta_area["NOMBRE"]; ?></option>  
+            <option name="select_area" value ="<?php echo $cnslta_area["IDAREA"];?>" required><?php echo $cnslta_area["NOMBRE"]; ?></option>  
             <?php } ?>
             </select>
           <p class="p-emple">Contraseña:</p>
-          <input class="btn_empl" type="password" name="password_emple" id="">
+          <input class="btn_empl" type="password" name="password_emple" id="" pattern="[A-Za-z0-9!?-]{8,12}" title="Debe tener mínimo 8 caracteres " required>
           </div>   <!--div elmto-emple-->
 
           <table>           

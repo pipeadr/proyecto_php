@@ -37,11 +37,11 @@ include '../../controlador/controlarea.php';
         <form action="vista_editar_areas.php" method="post">
            <table>
         <?php foreach($rs as $r) {?>
-           <input type="hidden" name="txtID" value="<?php echo $r['IDAREA']; ?>"> 
+           <input type="hidden" name="txtID" value="<?php echo $r['IDAREA']; ?>" title = "Ingrese un Código para el área" required> 
             <tr>
                 <td>Nombre Área:</td>
                 
-                <td><input type="text" name="txtnameArea" id="" value="<?php echo $r['NOMBRE']; ?>"></td>
+                <td><input type="text" name="txtnameArea" id="" value="<?php echo $r['NOMBRE']; ?>" title ="ingrese un área" required></td>
             </tr>
             <?php $id_li = $r['FKEMPLE'];  } ?>
             <tr>

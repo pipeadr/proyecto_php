@@ -64,11 +64,11 @@ $db->cerrarBd();
         <table>
            <tr>
             <td>ID:</td>
-            <td><input type="text" name="txtID"></td>
+            <td><input type="text" name="txtID" pattern="[A-Za-z0-9!?-]{8,12}"></td>
            </tr>
            <tr>
             <td>Nombre:</td>
-            <td><input type="text" name="txtname"></td>
+            <td><input type="text" name="txtname" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"></td>
            </tr> 
            <tr sty>
             <td></td>

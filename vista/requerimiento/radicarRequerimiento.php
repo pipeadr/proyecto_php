@@ -52,11 +52,11 @@ $db->cerrarBd();
    
       <div class="elmto-3">
       
-      <textarea name="txtOBSERVACION"   id="" placeholder="Ingrese su observación"  ></textarea>
+      <textarea name="txtOBSERVACION"   id="" placeholder="Ingrese su observación" required></textarea>
       </div>
 
 
-      <input type="hidden" name="Id_empleado"  value="<?php echo "$ID_EMPLEADO"; ?>">
+      <input type="hidden" name="Id_empleado"  value="<?php echo "$ID_EMPLEADO"; ?>" required>
       <input type="hidden" name="Estado_requisito"  value="1">
 
       <div class="elmto-4">
