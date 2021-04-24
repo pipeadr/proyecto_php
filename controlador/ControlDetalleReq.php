@@ -83,6 +83,29 @@ class ControlDetalleReq
 		$objControlConexion->cerrarBd();
 	}
 
+	function modificar_tem()
+	{
+             //IDDETALLE	FECHA	OBSERVACION	FKREQ	FKESTADO	FKEMPLE	FKEMPLEASIGNADO
+		$IDDETALLE=$this->objControlDetalleReq->getIDDETALLE();
+		$FKESTADO=$this->objControlDetalleReq->getFKESTADO();
+		$objControlConexion = new ControlConexion();
+		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
+		$comandoSql = "update detallereq set FKESTADO = '".$FKESTADO."' where IDDETALLE = '".$IDDETALLE."'";
+		//$objControlConexion->ejecutarComandoSql($comandoSql);
+		if ( $objControlConexion->ejecutarComandoSql($comandoSql) )
+		{
+			//$mData=array ('msg'=>'guardo Correctamente');	
+			$mData = true;
+		}
+		else {
+			//$mData=array ('error'=>'Ocurrió un error ...');
+			$mData = false;	
+		}
+		$objControlConexion->cerrarBd();
+		return $mData;    
+	}
+	
+
 	function borrar()
 	{
             //IDDETALLE	FECHA	OBSERVACION	FKREQ	FKESTADO	FKEMPLE	FKEMPLEASIGNADO

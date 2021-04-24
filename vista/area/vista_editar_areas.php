@@ -5,11 +5,11 @@ include '../../controlador/controlarea.php';
 
 $ID = $_POST['txtID'];
 $name = $_POST['txtnameArea'];
-$lider = $_POST['select_nameArea'];
+$lider = $_POST['select_nameArea']; 
 
 $objarea = new area($ID, $name, $lider);
 $obj_rs = new controlarea($objarea);
-$r = $obj_rs->modificar();
+$r = $obj_rs->modificar(); 
 if($r) 
 {  
     $rpesta_clta = "Área modificafa correctamente";

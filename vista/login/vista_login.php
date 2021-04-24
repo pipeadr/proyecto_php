@@ -52,7 +52,8 @@ $cnsltas_lgn = $rs4->fetch_array(MYSQLI_BOTH);
       </form>
 
      <a class="botones" href="../empleado/empleado.php">Editar Empleados</a> <br>
-     <a class="botones" href="../area/area.php">Editar Áreas</a>
+     <a  class="botones" href="../area/area.php">Editar Áreas</a>
+     <a class="botones" href="../requerimiento/mostrarrequerimineto.php">Editar Requerimientos</a>
       <form method="post" action="" class="hijo"> 
     <input class="botones"  type="submit" name="btn" value="Cerrar Sección">
       </form>
