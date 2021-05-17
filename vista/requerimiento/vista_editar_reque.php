@@ -7,9 +7,13 @@ include '../../modelo/requerimineto/DetalleReq.php';
 include '../../controlador/ControlDetalleReq.php';
 
 $id_reque = $_POST['ID_RE'];
+//$id_fkreque = $_POST['ID_fkrequ'];
+//$id_area = $_POST['select_Area'];
 $id_estado =  $_POST['select_nameEstado'];
+$id_empleado = $_POST['select_Encargado'];
+//var_dump($id_fkreque);
 
-$objEstado = new consultar_requerimiento($id_reque, $id_estado);
+$objEstado = new consultar_requerimiento($id_reque, $id_estado, $id_empleado );
 $obj_rs = new ControlDetalleReq($objEstado);
 $r = $obj_rs->modificar_tem();
 

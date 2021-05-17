@@ -3,7 +3,7 @@
  * -Para llamar a un metodo primero hay que instanciar la clase, es decir crear un objeto de la clase
    -En PHP $nombreObjeto = new nombreClase(Argumentos del constructor)
    -Para llamar un metodo se escribe $nobreObjeto->nombreMetodo(Argumentos)
- */
+ */ 
 class ControlDetalleReq
 {
 	var $objControlDetalleReq;
@@ -88,16 +88,24 @@ class ControlDetalleReq
              //IDDETALLE	FECHA	OBSERVACION	FKREQ	FKESTADO	FKEMPLE	FKEMPLEASIGNADO
 		$IDDETALLE=$this->objControlDetalleReq->getIDDETALLE();
 		$FKESTADO=$this->objControlDetalleReq->getFKESTADO();
+		$FKEMPLEASIGNADO = $this->objControlDetalleReq->getIDEMPLEADO();
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "update detallereq set FKESTADO = '".$FKESTADO."' where IDDETALLE = '".$IDDETALLE."'";
-		//$objControlConexion->ejecutarComandoSql($comandoSql);
+		$comandoSql = "update detallereq set FKESTADO = '".$FKESTADO."', FKEMPLEASIGNADO = '".$FKEMPLEASIGNADO."' where IDDETALLE = '".$IDDETALLE."'";
+		// $comandoSql = "START TRANSACTION;
+		//                UPDATE detallereq set FKESTADO = '".$FKESTADO."' where IDDETALLE = '".$IDDETALLE."';
+		// 			   update requerimiento set FKAREA = '".$IDAREA."' where IDREQ = '".$FKREQUERIMIENTO."';
+		// 			   update detallereq set FKEMPLEASIGNADO = '".$IDEMPLEADO."' where IDDETALLE = '".$IDDETALLE."'
+		// 			   ROLLBACK;
+		// 			   COMMIT;";
+		// 			   var_dump($objControlConexion->ejecutarComandoSql);
+		//return $objControlConexion->ejecutarComandoSql($comandoSql);
 		if ( $objControlConexion->ejecutarComandoSql($comandoSql) )
 		{
 			//$mData=array ('msg'=>'guardo Correctamente');	
 			$mData = true;
 		}
-		else {
+		else {  
 			//$mData=array ('error'=>'Ocurrió un error ...');
 			$mData = false;	
 		}

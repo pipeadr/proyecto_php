@@ -9,7 +9,7 @@
            <li class="sub_menu">Nuestro Equipo</li>
            <li class="sub_menu"><a href="vista/login/login.php"><i class="fas fa-user"></i></a></li>
          </ul>
-       </nav>
+       </nav> 
      </header>
 
      <script src="https://kit.fontawesome.com/176c817b83.js" crossorigin="anonymous"></script>

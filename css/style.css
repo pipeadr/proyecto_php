@@ -64,6 +64,7 @@ input.login
   border: 1px solid #fff;
   border-radius: 20px;
   padding: 5px;
+  outline: none;
 }
 
 input
@@ -74,6 +75,7 @@ input
     padding: 15px;
     border: 1px solid #fff;
     border-radius: 10px;
+    outline: none;
     font-size: 16px;
     transition: all 0.6s ease;
 }
@@ -113,6 +115,8 @@ ul li.sub_menu
   /* width: 20%; */
   padding: 25px;
   box-sizing: border-box;
+  border: 1px solid transparent;
+  transition: all 0.6s ease;
 }
 ul li.sub_menu:hover {
     border: 1px solid #ffffff;
@@ -162,6 +166,7 @@ input.botones
     border: 1px solid #fff;
     border-radius: 10px;
     font-size: 16px;
+    outline: none;
     transition: all 0.6s ease;
 }
 a.botones:hover,
@@ -170,6 +175,7 @@ input.botones:hover
   color: #4b6e96;
   background-color: #ffffff;
   cursor: pointer;
+  outline: none;
 }
 
 div.padre
@@ -331,6 +337,7 @@ input.btn_empl
     border: 1px solid #fff;
     border-radius: 10px;
     font-size: 16px;
+    outline: none;
     transition: all 0.6s ease;
 }
 p.p-emple
