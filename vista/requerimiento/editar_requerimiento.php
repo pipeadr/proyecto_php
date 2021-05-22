@@ -5,6 +5,7 @@ include '../../modelo/requerimineto/DetalleReq.php';
 
  $id = $_GET['id'];
  //$fkre = $_GET['fkre']; 
+ //$r = $_SESSION
  //var_dump($fkre);
  $db = new controlconexion();
  $db->abrirBd("localhost","root","","mesa_ayuda");
@@ -13,6 +14,7 @@ include '../../modelo/requerimineto/DetalleReq.php';
  $resultados= $rs->fetch_all(MYSQLI_ASSOC);
  $db->cerrarBd();
  //var_dump($resultados);
+
 
  /** Area*/
 //  $db = new controlconexion();

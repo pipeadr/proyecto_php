@@ -25,6 +25,14 @@ $rs_area = $db->ejecutarSelect($Sql_area);
 $cnslta_areas = $rs_area->fetch_all(MYSQLI_ASSOC);
 $db->cerrarBd();
 
+ /* Cargos*/
+ $db = new controlconexion();
+ $db->abrirBd("localhost","root","","mesa_ayuda");
+ $comandoSql = "select * from cargo";
+ $rs_ = $db->ejecutarSelect($comandoSql);
+ $cargos = $rs_->fetch_all(MYSQLI_ASSOC);
+ $db->cerrarBd();
+
 ?>
 
 <!DOCTYPE html>
@@ -110,6 +118,16 @@ $db->cerrarBd();
             <select  name="select_area" id="">
             <?php foreach($cnslta_areas  as $cnslta_area) { ?>
             <option name="select_area" value ="<?php echo $cnslta_area["IDAREA"];?>"><?php echo $cnslta_area["NOMBRE"]; ?></option>  
+            <?php } ?>
+            </select></td> 
+            </tr>
+
+            <tr>
+            <td>Cargo:</td>
+            <td>
+            <select  name="select_cargo" id="">
+            <?php foreach($cargos  as $cargo) { ?>
+            <option name="select_cargo" value ="<?php echo $cargo["IDCARGO"];?>"><?php echo $cargo["NOMBRE"]; ?></option>  
             <?php } ?>
             </select></td> 
             </tr>

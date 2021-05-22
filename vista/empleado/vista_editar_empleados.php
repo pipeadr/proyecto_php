@@ -3,6 +3,8 @@ include '../../controlador/controlconexion.php';
 include '../../modelo/empleado/empleado.php';
 include '../../controlador/controlempleado.php';
 include '../../controlador/consultar_Jefe/control_consultar_jefe.php';
+include '../../controlador/controladorcargo_por_empleado.php';
+include '../../modelo/cargo/cargo_por_empleado.php';
 
 $ID = $_POST['ID'];
 $name = $_POST['txt2nombre'];
@@ -89,17 +91,48 @@ if($r)
 {  
     if(($rs_carga_pdf) && ($rs_carga_ima) )
     {
-        $rpesta_clta = "El Empleado se guardo correctamente";
+        // $rpesta_clta = "El Empleado se guardo correctamente";
+        $rpesta_clta = true;
     } else {
-        $rpesta_clta = "El Empleado se guardo correctamente pero la imagen no se pudo guardar, intente más tarde";
+        // $rpesta_clta = "El Empleado se guardo correctamente pero la imagen no se pudo guardar, intente más tarde";
+        $rpesta_foto = false;
     }
   
 } else
 {
-  $rpesta_clta = "Algo salio mal, por favor intente más tarde";
+  $rpesta_clta = false;
+  // $rpesta_clta = "Algo salio mal, por favor intente más tarde";
 }
 
-
+$cargo_empleado = $_POST['select_cargo'];
+//var_dump($cargo);
+$db = new controlconexion();
+$db->abrirBd("localhost","root","","mesa_ayuda"); 
+$comandoSql = "select * from cargo_por_empleado WHERE FKEMPLE = '".$ID."'";
+$rs_car = $db->ejecutarSelect($comandoSql);
+$cargos = $rs_car->fetch_all(MYSQLI_ASSOC);
+$db->cerrarBd();
+foreach($cargos  as $cargo) {
+ $fechaini = $cargo['FECHAINI'];
+ $fechafin = $cargo['FECHAFIN'];
+}
+$objcargo_por_empleados = new cargo_por_empleado($cargo_empleado, $ID, $fechaini, $fechafin);
+$objcargo_por_empleado = new controladorcargo_por_empleado($objcargo_por_empleados);
+$cg = $objcargo_por_empleado->modificar();
+if($cg) 
+{ 
+  $rpta_cargo = true;
+} else {
+  $rpta_cargo = false;
+}
+//respuesta final
+ if($rpesta_clta && $cg) {
+   $rptafinal = "El Empleado se Edito correctamente"; 
+ } else if(($rpesta_clta && $cg) && !$rpesta_foto) {
+  $rptafinal = "El Empleado se Edito correctamente pero la foto falló"; 
+ } else {
+  $rptafinal = "algo salió mal";  
+ }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,16 +141,11 @@ if($r)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empleados</title>
-    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<div class="home">
-  <center> 
-  <p>El estado al actualizar el empleado es: <?php echo $rpesta_clta; ?></p>
-    <a href="empleado.php">Volver a Empleados</a>
-  </center>
-
-   </div>
-   
+<script type="text/javascript">
+alert("<?php echo $rptafinal; ?>");
+window.location='empleado.php'; 
+</script>
 </body>
 </html>

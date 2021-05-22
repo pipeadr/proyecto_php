@@ -1,7 +1,7 @@
 <?php
 include '../../controlador/controlconexion.php';
 include '../../modelo/empleado/empleado.php';
-include '../../controlador/controlempleado.php';
+include '../../controlador/controlempleado.php'; 
 include '../../controlador/consultar_Jefe/control_consultar_jefe.php';
 
 /* Consultar Empleados */
@@ -95,7 +95,7 @@ $db->cerrarBd();
     <h3 class="title-em">Ingresar Nuevos Empleados</h3> 
       <form method="post"  action="insertar_emp.php" enctype="multipart/form-data">
 
-      <div class="home">
+      <div class="home">  
           <div class="elmto-emple">
           <p class="p-emple">ID:</p>
           <input class="btn_empl" type="text" name="txtID" required="">
@@ -119,7 +119,7 @@ $db->cerrarBd();
 
           <div class="elmto-emple">
           <p class="p-emple">Dirección:</p>
-          <input class="btn_empl"  type="text" name="direccion" id="" title="Ingrese la dirección de su ubicación inluyendo múnicipio"> >
+          <input class="btn_empl"  type="text" name="direccion" id="" title="Ingrese la dirección de su ubicación inluyendo múnicipio">
           <p class="p-emple">Jefe:</p>
           <select  name="select_jefe" id="">
             <option value ="0">Seleccionar Jefe</option>
@@ -128,6 +128,11 @@ $db->cerrarBd();
             <?php } ?>
             </select>
           </div>   <!--div elmto-emple-->
+
+          <div class="elmto-emple">
+          <p class="p-emple">Cargo:</p>
+          
+          </div>
 
           <div class="elmto-emple">
           <p class="p-emple">Área:</p>

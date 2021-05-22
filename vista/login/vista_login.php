@@ -24,10 +24,8 @@ $cnsltas_lgn = $rs4->fetch_array(MYSQLI_BOTH);
    } else {
     echo '<script type="text/javascript">'
     , 'alert("La contraseña o el Código del empleado no son correctos, intente nuevamente");'
+    , 'window.location="login.php";'
     , '</script>'; 
-   
-    header('Location: login.php');     
-      
    }
 ?>
 <!DOCTYPE html>
