@@ -1,3 +1,27 @@
+<?php
+session_start();
+if(isset( $_SESSION['Usuarios'])) {
+	$a = $_SESSION['Usuarios'];
+	if(isset($a)) {
+		$b = $a['Nombre_Cargo'];
+		  switch($b) {
+			case "Administrador":
+			header('Location: admin.php');
+			break;
+			case "Director":
+			 header('Location: director.php');
+			 break;
+			 case "Lider":
+			   header('Location: lider.php');
+			   break;
+			   case "Empleado":
+				 header('Location: employee.php');
+				 break;
+		  }
+		}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +36,8 @@
 <div class="padre-login">
    <h1>Iniciar Sección</h1>
      <div class="formulario_login">
-	 <form action="vista_login.php" method="POST">
-
+	 <!-- <form action="vista_login.php" method="POST"> -->
+     <form action="validar.php" method="POST">
 	 <div class="ppl">
        <div class="hijo">
 	     <label for="em" class="login">Código Empleado</label>
