@@ -33,6 +33,7 @@ class controlconexion
 
     function ejecutarComandoSql($sql) {
     	try	{
+			
 			return $this->conn->query($sql);
 			}
 		catch (Exception $e) {
@@ -50,6 +51,10 @@ class controlconexion
 			  }	
 		return $recordSet; // Recordset apunta al encabezado de la tabla, resultado de la consulta
 			}   
+			function objconexion() {
+				return $this->conn;   	
+			  }
+
 			
 }
 ?>

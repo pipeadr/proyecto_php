@@ -79,8 +79,17 @@ if($name_pdf)
 $tel = $_POST['txt2tel'];
 $mail = $_POST['txt2correo'];
 $dire = $_POST['txt2dire'];
-$X = $_POST['txt2X'];
-$Y = $_POST['txt2Y'];
+$X__ = $_POST['longi'];
+$Y__ = $_POST['latitu'];
+if($X__ && $Y__) {
+ $X = $X__;
+ $Y = $Y__;
+}
+  else {
+    $X = $_POST['txt2X'];
+    $Y = $_POST['txt2Y'];
+  }
+ 
 $jefe = $_POST['select_jefe'];
 $area = $_POST['select_area'];
 $contra = $_POST['txt2pass'];
@@ -93,14 +102,17 @@ if($r)
     {
         // $rpesta_clta = "El Empleado se guardo correctamente";
         $rpesta_clta = true;
+        $rpesta_foto = true;
     } else {
         // $rpesta_clta = "El Empleado se guardo correctamente pero la imagen no se pudo guardar, intente más tarde";
+        $rpesta_clta = true;
         $rpesta_foto = false;
     }
   
 } else
 {
   $rpesta_clta = false;
+  $rpesta_foto = false;
   // $rpesta_clta = "Algo salio mal, por favor intente más tarde";
 }
 
@@ -126,10 +138,14 @@ if($cg)
   $rpta_cargo = false;
 }
 //respuesta final
- if($rpesta_clta && $cg) {
-   $rptafinal = "El Empleado se Edito correctamente"; 
- } else if(($rpesta_clta && $cg) && !$rpesta_foto) {
-  $rptafinal = "El Empleado se Edito correctamente pero la foto falló"; 
+ if(($rpesta_clta && $cg) && $rpesta_foto == false ) {
+  $rptafinal = "El Empleado se Edito correctamente pero la foto fallo"; 
+ } else if($rpesta_clta) {
+      if($cg) {
+        $rptafinal = "El Empleado se Edito correctamente"; 
+      } else {
+        $rptafinal = "El Empleado se Edito correctamente pero el cargo no, intente más tarde"; 
+      }
  } else {
   $rptafinal = "algo salió mal";  
  }

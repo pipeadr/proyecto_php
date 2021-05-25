@@ -36,17 +36,16 @@ class controlempleado
 		//$comandoSql = "INSERT INTO empleado(IDEMPLEADO,NOMBRE,FOTO,HOJAVIDA,TELEFONO,EMAIL,DIRECCION,X,Y,fkEMPLE_JEFE,fkAREA,PASSWORD) VALUES('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."','".$X."','".$Y."','".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
 		$comandoSql = "insert into empleado values('".$IDEMPLEADO."','".$NOMBRE."','".$FOTO."','".$HOJAVIDA."','".$TELEFONO."','".$EMAIL."','".$DIRECCION."',".$X.",".$Y.",'".$fkEMPLE_JEFE."','".$fkAREA."','".$PASSWORD."')";
 		//$objControlConexion->ejecutarComandoSql($comandoSql);
-		var_dump($comandoSql);
+		//var_dump($comandoSql);
 		if ( $db->ejecutarComandoSql($comandoSql) )
 		{
-			//$mData=array ('msg'=>'guardo Correctamente');	
 			$mData = true;
 		}
 		else {
-			//$mData=array ('error'=>'Ocurrió un error ...');
 			$mData = false;	
 		}
 		$db->cerrarBd();
+		//var_dump($mData);
 		return $mData; 
 	}
 
@@ -115,11 +114,9 @@ class controlempleado
 		//$objControlConexion->ejecutarComandoSql($comandoSql);
 		if ( $objControlConexion->ejecutarComandoSql($comandoSql) )
 		{
-			//$mData=array ('msg'=>'guardo Correctamente');	
 			$mData = true;
 		}
 		else {
-			//$mData=array ('error'=>'Ocurrió un error ...');
 			$mData = false;	
 		}
 		$objControlConexion->cerrarBd();
@@ -128,22 +125,23 @@ class controlempleado
 
 	function borrar()
 	{
-		$IDEMPLEADO=$this->objEmpleado->getIDEMPLEADO();
-		$objControlConexion = new ControlConexion();
-		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "delete from empleado where IDEMPLEADO = '".$IDEMPLEADO."'";
-		//$objControlConexion->ejecutarComandoSql($comandoSql);
-		//$objControlConexion->cerrarBd();
-		if ( $objControlConexion->ejecutarComandoSql($comandoSql) )
+		$ID = $this->objEmpleado->getIDEMPLEADO(); 
+		$db  = new ControlConexion();
+		$db->abrirBd("localhost","root","","mesa_ayuda");
+		//$db->abrirBd("localhost","pipeadr","rB4a9fdZ5uM06T0E","mesa_ayuda");
+		//$comandoSql = "DELETE FROM empleado WHERE IDEMPLEADO = '%".$ID."%'";
+		$comandoSql = "DELETE FROM empleado WHERE IDEMPLEADO = '".$ID."'";
+        //$comandoSql = 'DELETE FROM empleado WHERE IDEMPLEADO = "'.$ID.'"';
+		//var_dump($comandoSql);
+		if ($db->ejecutarComandoSql($comandoSql))
 		{
-			//$mData=array ('msg'=>'guardo Correctamente');	
 			$mData = true;
 		}
 		else {
-			//$mData=array ('error'=>'Ocurrió un error ...');
+	
 			$mData = false;	
 		}
-		$objControlConexion->cerrarBd();
+		$db->cerrarBd();
 		return $mData; 
 	}
       

@@ -2,9 +2,13 @@
 include '../../controlador/controlempleado.php';
 include '../../modelo/empleado/empleado.php';
 include '../../controlador/controlconexion.php';
+include '../../controlador/controladorcargo_por_empleado.php';
+include '../../modelo/cargo/cargo_por_empleado.php';
 
 $ID = $_POST['txtID'];
 $name = $_POST['txtNombre'];
+
+
 
 /* Código para Archivos */
 //print_r($_FILES);
@@ -70,8 +74,18 @@ $dire = $_POST['direccion'];
 $jefe = $_POST['select_jefe'];
 $area = $_POST['select_area'];
 $contra = $_POST['password_emple'];
-$X = 2;
-$Y = 3;
+$X__ = $_POST['longi'];
+$Y__ = $_POST['latitu'];
+if($X__ && $Y__) {
+ $X = $X__;
+ $Y = $Y__;
+}
+  else {
+    $X = 1;
+    $y = 1;
+  }
+// $X = 2;
+// $Y = 3;
 // var_dump($ID);
 // var_dump($name);
 // var_dump($path_img);
@@ -84,42 +98,59 @@ $Y = 3;
 $objEmpleado = new empleado($ID, $name, $path_img, $path_pdf, $tel, $mail, $dire, $X, $Y, $jefe, $area, $contra);
 $objControlempleados = new controlempleado($objEmpleado);
 $r = $objControlempleados->guardar();
+//var_dump($r);
+$cargo_empleado = $_POST['select_cargo'];
+$fechaini = $_POST['Fecha_creac'];
+//var_dump($cargo);
 
-if($r) 
-{  
-    if(($rs_carga_pdf) && ($rs_carga_ima) )
-    {
-        $rpesta_clta = "El Empleado se guardo correctamente";
-    } else {
-        $rpesta_clta = "El Empleado se guardo correctamente pero la imagen no se pudo guardar, intente más tards";
-    }
+// if($r) 
+// {  
+//     if(($rs_carga_pdf) && ($rs_carga_ima) )
+//     {
+//       $rpesta_clta = true;
+//       $rpesta_foto = true;
+//     } else {
+//       $rpesta_clta = true;
+//       $rpesta_foto = false;
+//     }
   
-} else
-{
-  $rpesta_clta = "Algo salio mal, por favor intente más tarde";
+// } else
+// {
+//   $rpesta_clta = false;
+//   $rpesta_foto = false;
+// }
+
+$objcargo_por_empleados = new cargo_por_empleado($cargo_empleado, $ID, $fechaini, NULL);
+$objcargo_por_empleado = new controladorcargo_por_empleado($objcargo_por_empleados);
+$cg = $objcargo_por_empleado->guardar();
+//respuesta cargo
+if($cg) 
+{ 
+  $rpta_cargo = true;
+} else {
+  $rpta_cargo = false;
+}
+//respuesta final
+ /** */
+if($r) {
+   if($rpta_cargo) {
+      if($rs_carga_ima && $rs_carga_pdf) {
+        $rptafinal = "El Empleado se guardo correctamente";
+      } else {
+        $rptafinal = "El Empleado se guardo correctamente pero algo fallo con los archivos";
+      }
+   } else  { //else del cargo
+         if($rs_carga_ima && $rs_carga_pdf) { //else del cargo
+          $rptafinal = "El Empleado se guardo correctamente pero el cargo no";
+         } else { //else del cargo archivos
+          $rptafinal = "El Empleado se guardo correctamente pero algo fallo con los archivos y el cargo";
+         }
+   } 
+} else { //else del cargo ppl
+  $rptafinal = "algo salió mal"; 
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empleados</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-<div class="home">
-  <center>
-  <h1>Bienvenido</h1>
-
- <p>El estado al crear el empleado es: <?php echo $rpesta_clta; ?></p>
- <a href="empleado.php">Volver</a>
-
-  </center>
-
-  </div>
-
-</body>
-</html>
+<script type="text/javascript">
+alert("<?php echo $rptafinal; ?>");
+window.location='empleado.php'; 
+</script>

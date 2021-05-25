@@ -16,12 +16,19 @@ class controladorcargo_por_empleado
 	function guardar()
 	{
 		
-		$FKAREA=$this->objcontroladorcargo_por_empleado->getFKAREA();
+		$FKCARGO=$this->objcontroladorcargo_por_empleado->getFKCARGO();
+        //var_dump($FKCARGO);
+		$FKEMPLE=$this->objcontroladorcargo_por_empleado->getFKEMPLE();
+        $FECHAINI=$this->objcontroladorcargo_por_empleado->getFECHAINI();
+        $FECHAFIN=$this->objcontroladorcargo_por_empleado->getFECHAFIN();
 		$db = new ControlConexion();
 		$db->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "insert into requerimiento values(NULL,'".$FKAREA."')";
+		//$comandoSql = "insert into area values('".$ID."','".$NOMBRE."','".$LIDER."')";
+		$comandoSql = "INSERT INTO cargo_por_empleado VALUES('".$FKCARGO."','".$FKEMPLE."','".$FECHAINI."','".$FECHAFIN."')";
+	
 		//$objControlConexion->ejecutarComandoSql($comandoSql);
-		if ( $db->ejecutarComandoSql($comandoSql) )
+        //var_dump($comandoSql);
+        if ( $db->ejecutarComandoSql($comandoSql) )
 		{
 			//$mData=array ('msg'=>'Actualizado Correctamente');
 			$mData = true;	
@@ -32,6 +39,7 @@ class controladorcargo_por_empleado
 		}
 		$db->cerrarBd();
 		return $mData;
+   
 		
 	}
 
@@ -62,7 +70,7 @@ class controladorcargo_por_empleado
         FECHAINI = '".$FECHAINI."', FECHAFIN = '".$FECHAFIN."'  where FKEMPLE = '".$FKEMPLE."'";
 	
 		//$objControlConexion->ejecutarComandoSql($comandoSql);
-        var_dump($comandoSql);
+        //var_dump($comandoSql);
         if ( $db->ejecutarComandoSql($comandoSql) )
 		{
 			//$mData=array ('msg'=>'Actualizado Correctamente');
@@ -79,12 +87,22 @@ class controladorcargo_por_empleado
 
 	function borrar()
 	{
-		$IDREQ=$this->objcontroladorcargo_por_empleado->getIDREQ();
-		$objControlConexion = new ControlConexion();
-		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
-		$comandoSql = "delete from requerimiento where IDREQ = '".$IDREQ."'";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
-		$objControlConexion->cerrarBd();
+		$FKCARGO=$this->objcontroladorcargo_por_empleado->getFKCARGO();
+		$db = new ControlConexion();
+		$db->abrirBd("localhost","root","","mesa_ayuda");
+		$comandoSql = "delete from cargo_por_empleado where FKEMPLE = '".$FKCARGO."'";
+		//var_dump($comandoSql);
+		if ( $db->ejecutarComandoSql($comandoSql) )
+		{
+			//$mData=array ('msg'=>'Actualizado Correctamente');
+			$mData = true;	
+		}
+		else {
+			//$mData=array ('error'=>'Ocurrió un error ...');
+			$mData = false;
+		}
+		$db->cerrarBd();
+		return $mData;
                  
 	}
 }

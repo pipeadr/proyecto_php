@@ -53,7 +53,7 @@ $db->cerrarBd();
       ?>
       </td>
       <td><a href="editar_area.php?id=<?php echo $registro["IDAREA"];?>&fk_emple=<?php echo $registro["FKEMPLE"];?>"><i class="fas fa-edit"></i></a></td>
-      <td><a href="eliminar_empleado.php?id=<?php echo $registro["IDAREA"];?>"><i class="fas fa-trash-alt"></i></a></td>
+      <td><a href="eliminar_area.php?id=<?php echo $registro["IDAREA"];?>"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
      <?php }?>    
      </table>
@@ -64,7 +64,7 @@ $db->cerrarBd();
         <table>
            <tr>
             <td>ID:</td>
-            <td><input type="text" name="txtID" pattern="[A-Za-z0-9!?-]{8,12}"></td>
+            <td><input type="text" name="txtID" ></td>
            </tr>
            <tr>
             <td>Nombre:</td>

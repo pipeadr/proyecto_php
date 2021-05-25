@@ -3,17 +3,48 @@ include '../../controlador/controlconexion.php';
 include '../../modelo/empleado/empleado.php';
 include '../../modelo/empleado/consultar_empleado.php';
 include '../../controlador/controlempleado.php';
+include '../../controlador/controladorcargo_por_empleado.php';
+include '../../modelo/cargo/cargo_por_empleado.php';
 
-$id = $_GET['id'];
-$objConsulta_empleado = new consultar_empleado($id);
-$objControlempleados = new controlempleado($objConsulta_empleado);
-$rs = $objControlempleados->borrar();
-if($rs) {
-    $rpesta_clta = "El Empleado se Elimino correctamente";
-} else
-{
-    $rpesta_clta = "Algo salio mal, por favor intente más tarde";
+$id = $_GET['id']; //id es el idintificador del empleado
+/** eliminar Cargp */
+$objcargo_por_empleados = new cargo_por_empleado($id, $id, $id, $id);
+$objcargo_por_empleado = new controladorcargo_por_empleado($objcargo_por_empleados);
+$cg = $objcargo_por_empleado->borrar();
+if($cg) {
+    $objEmpleado = new empleado($id, $id, $id, $id, $id, $id, $id, $id, $id , $id, $id, $id);
+    $objControlempleados = new controlempleado($objEmpleado);
+    $empleados = $objControlempleados->borrar();
+     if($empleados) {
+        $db = new controlconexion();
+        $db->abrirBd("localhost","root","","mesa_ayuda");
+        $comandoSql = "select * from empleado where IDEMPLEADO = '".$id."'";
+        $rs = $db->ejecutarSelect($comandoSql);
+        $registros = $rs->fetch_all(MYSQLI_ASSOC);
+        $db->cerrarBd();
+        foreach($registros as $registro) {
+            $foto = $registro['FOTO'];
+            $pdf = $registro['HOJAVIDA'];
+           }
+           if(file_exists($foto) && file_exists($pdf)) {
+            if(unlink($foto) && unlink($pdf)) {
+                $respuestaFinal = "Empleado eliminado correctamente";
+            } else {
+                $respuestaFinal = "Empleado eliminado correctamente, pero algo falló con la eliminacion de los archivos(foto y pdf)";
+            }
+           } else {
+            $respuestaFinal = "Empleado eliminado correctamente";
+           }
+        
+          
+     } else {
+        $respuestaFinal = "Algo Salió mal, recomandamos llamar al administrador";
+     }
+} else {
+    $respuestaFinal = "Algo Salió mal, intente más tarde";
 }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -25,6 +56,8 @@ if($rs) {
     <title>eliminar empleado</title>
 </head>
 <body>
-    <p>El estado al eliminar el empleado es: <?php echo $rpesta_clta; ?></p>
-    <a href="empleado.php">Volver a Empleados</a>
+<script type="text/javascript">
+alert("<?php echo $respuestaFinal ; ?>");
+window.location='empleado.php';
+</script>
 </body>

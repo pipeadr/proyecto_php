@@ -97,12 +97,14 @@ $db->cerrarBd();
        </tr>
        <tr>
        <td>X</td>
-       <td><input type="text" name="txt2X" value="<?php echo $r["X"]  ?>"></td>
+       <td><input type="text" name="txt2X" value="<?php echo $r["X"] ?>" readonly></td>
        </tr>
        <tr>
        <td>Y</td>
-       <td><input type="text" name="txt2Y" value="<?php echo $r["Y"]  ?>"></td>
+       <td><input type="text" name="txt2Y" value="<?php echo $r["Y"]  ?>" readonly></td>
        </tr>
+       <input type="hidden" name="latitu" id="latitude_" value="">
+       <input type="hidden" name="longi" id="longitude_" value="">
        <tr>
             <td>Jefe:</td>
             <td>
@@ -146,4 +148,6 @@ $db->cerrarBd();
 
     
 </body>
+<script src="../../js/main.js">
+</script>
 </html>

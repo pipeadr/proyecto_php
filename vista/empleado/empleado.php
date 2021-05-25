@@ -7,7 +7,18 @@ include '../../controlador/consultar_Jefe/control_consultar_jefe.php';
 /* Consultar Empleados */
 $db = new controlconexion();
 $db->abrirBd("localhost","root","","mesa_ayuda");
-$comandoSql = "select * from empleado";
+$comandoSql = "SELECT emple.IDEMPLEADO, emple.NOMBRE, emple.FOTO, emple.HOJAVIDA, emple.TELEFONO, emple.EMAIL, emple.DIRECCION,
+emple.X, emple.Y,
+carxemple.FKEMPLE,
+car.NOMBRE AS Nombre_Cargo,
+ar.NOMBRE AS NOMBRE_AREA,
+jef.NOMBRE AS NOMBRE_JEFE
+FROM empleado emple
+INNER JOIN cargo_por_empleado carxemple ON carxemple.FKEMPLE = emple.IDEMPLEADO
+INNER JOIN cargo car ON carxemple.FKCARGO = car.IDCARGO
+INNER JOIN area ar ON ar.IDAREA = emple.fkAREA
+INNER JOIN empleado jef on jef.IDEMPLEADO = emple.fkEMPLE_JEFE
+ORDER BY emple.IDEMPLEADO";
 $rs = $db->ejecutarSelect($comandoSql);
 $registros = $rs->fetch_all(MYSQLI_ASSOC);
 /*Consultar jefe */
@@ -17,6 +28,13 @@ $cnslta_areas = $rs_area->fetch_all(MYSQLI_ASSOC);
 $db->cerrarBd();
 //var_dump($registros);
 //var_dump($cnslta_areas);
+ /* Cargos*/
+ $db = new controlconexion();
+ $db->abrirBd("localhost","root","","mesa_ayuda");
+ $comandoSql = "select * from cargo";
+ $rs_ = $db->ejecutarSelect($comandoSql);
+ $cargos = $rs_->fetch_all(MYSQLI_ASSOC);
+ $db->cerrarBd();
 
 
 
@@ -46,6 +64,7 @@ $db->cerrarBd();
      <th>Dirrección</th>
      <th>X</th>
      <th>Y</th>
+     <th>Cargo</th>
      <th>Jefe</th>
      <th>Area</th>
      <th>editar</th>
@@ -64,25 +83,9 @@ $db->cerrarBd();
       <td><?php echo $registro["DIRECCION"];  ?></td>
       <td><?php echo $registro["X"];  ?></td>
       <td><?php echo $registro["Y"];  ?></td>
-      <td>
-        <?php 
-        $objConsulta_empleado = new control_consultar_jefe($registro["fkEMPLE_JEFE"]);
-        $consultas = $objConsulta_empleado->consultar();
-        //var_dump($consultas);
-        foreach($consultas as $consulta) {
-            echo $consulta["NOMBRE"];
-        }
-        ?>
-      </td> 
-      <td>
-      <?php 
-        foreach($cnslta_areas  as $cnslta_area) {
-          if($cnslta_area["IDAREA"] === $registro["fkAREA"] ){
-            echo $cnslta_area["NOMBRE"]; 
-          }
-        }
-        ?>
-      </td>
+      <td><?php echo $registro["Nombre_Cargo"];  ?></td>
+      <td><?php echo $registro["NOMBRE_JEFE"];  ?></td>
+      <td><?php echo $registro["NOMBRE_AREA"];  ?></td>
       <td><a href="editar_empleado.php?id=<?php echo $registro["IDEMPLEADO"];?>"><i class="fas fa-edit"></i></a></td>
       <td><a href="eliminar_empleado.php?id=<?php echo $registro["IDEMPLEADO"];?>"><i class="fas fa-trash-alt"></i></a></td>
      </tr>
@@ -131,9 +134,17 @@ $db->cerrarBd();
 
           <div class="elmto-emple">
           <p class="p-emple">Cargo:</p>
+          <select  name="select_cargo" id="">
+            <?php foreach($cargos  as $cargo) { ?>
+            <option name="select_cargo" value ="<?php echo $cargo["IDCARGO"];?>"><?php echo $cargo["NOMBRE"]; ?></option>  
+            <?php } ?>
+            </select>
+            <p class="p-emple">Fecha ingreso:</p>
+            <input type="date" name="Fecha_creac" id="" required>
           
           </div>
-
+                   <input type="hidden" name="latitu" id="latitude_" value="">
+                   <input type="hidden" name="longi" id="longitude_" value="">
           <div class="elmto-emple">
           <p class="p-emple">Área:</p>
           <select  name="select_area" id="">
@@ -161,4 +172,7 @@ $db->cerrarBd();
      </center> 
 </body>
 <script src="https://kit.fontawesome.com/176c817b83.js" crossorigin="anonymous"></script>
+
+<script src="../../js/main.js">
+</script>
 </html>
