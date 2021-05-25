@@ -121,8 +121,15 @@ class ControlDetalleReq
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "delete from detallereq where IDDETALLE = '".$IDDETALLE."'";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+		if ( $objControlConexion->ejecutarComandoSql($comandoSql) )
+		{
+			$mData = true;
+		}
+		else {  
+			$mData = false;	
+		}
 		$objControlConexion->cerrarBd();
+		return $mData;   
 	}
         
         function radicarReq()

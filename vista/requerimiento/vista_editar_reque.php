@@ -35,9 +35,9 @@ if($r)
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<h1>Bienvenido</h1>
-
-<p>El estado al editar el Requerimiento es: <?php echo $rpesta_clta; ?></p>
-<a href="http://localhost/proyecto_php/vista/requerimiento/mostrarrequerimineto.php">Volver a los Requerimientos</a>
+<script type="text/javascript">
+alert("<?php echo $rpesta_clta ; ?>");
+window.location='mostrarrequerimineto.php';
+</script>
 </body>
 </html>

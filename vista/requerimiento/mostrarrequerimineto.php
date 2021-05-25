@@ -1,4 +1,22 @@
 <?php
+session_start();
+$a = $_SESSION['Usuarios'];
+//var_dump($a);
+ if(isset($a)) {
+    $b = $a['Nombre_Cargo'];
+     if($b != "Administrador") {
+      echo '<script type="text/javascript">';
+      echo 'alert("Usted no tiene permiso ver esta página");';
+      echo 'window.location="../../vista/login/login.php";';
+      echo '</script>';
+    //   header('Location: login.php');       
+     }
+ } else {
+    echo '<script type="text/javascript">';
+    echo 'alert("Debe Iniciar Sesión primero");';
+    echo 'window.location="../../vista/login/login.php";';
+    echo '</script>';
+ }
 include '../../controlador/controlconexion.php';
 include '../../controlador/ControlDetalleReq.php';
 include '../../modelo/requerimineto/DetalleReq.php';
@@ -53,7 +71,7 @@ $dba->cerrarBd();
      <th>Observación</th>
      <th>Área</th>
      <th>Estado</th>
-     <th>Persona</th>
+     <th>Persona Radicada</th>
      <th>Encargado</th>
      <th>editar</th>
      <th>eliminar</th>
@@ -70,10 +88,20 @@ $dba->cerrarBd();
       <td><?php echo $regi["NOMBRE_PERSONAL"];  ?></td>
       <td><?php echo $regi["NOMBRE_JEFE"];  ?></td>
       <td> 
+    <?php if($regi["NOMBRE_ESTADO"] == "Cancelado" || $regi["NOMBRE_ESTADO"] == "Solucionado Totalmente") 
+     {
+     ?> 
+      <i class="far fa-eye-slash"></i>
+    <?php  
+     } else {
+    ?>
     <a href="editar_requerimiento.php?id=<?php echo $regi["IDDETALLE"];?>"><i class="fas fa-edit"></i></a>
+    <?php  
+     }
+    ?>
     </td>
     <td>
-    <a href="editar_empleado.php?id=<?php echo $regi["IDDETALLE"];?>"><i class="fas fa-trash-alt"></i></a>
+    <a href="eliminar_requerimiento.php?id=<?php echo $regi["IDDETALLE"];?>"><i class="fas fa-trash-alt"></i></a>
     </td>
      </tr>
       <?php }?>

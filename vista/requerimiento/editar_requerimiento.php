@@ -62,6 +62,7 @@ include '../../modelo/requerimineto/DetalleReq.php';
     
     <!--Resultados Estados-->
     <tr>
+    <td>Estado del Requerimiento</td>
     <td>
     <select  name="select_nameEstado" id="">    
     <?php foreach($estados as $estado) {?>                 
@@ -73,6 +74,7 @@ include '../../modelo/requerimineto/DetalleReq.php';
 
      <!--Resultados Encargado-->
      <tr>
+     <td>Encargado</td>
       <td>
        <select name="select_Encargado"" id="">
        <?php foreach($empleados as $empleado) {?>

@@ -82,8 +82,17 @@ class controlrequerimiento
 		$objControlConexion = new ControlConexion();
 		$objControlConexion->abrirBd("localhost","root","","mesa_ayuda");
 		$comandoSql = "delete from requerimiento where IDREQ = '".$IDREQ."'";
-		$objControlConexion->ejecutarComandoSql($comandoSql);
+		var_dump($comandoSql);
+		//$objControlConexion->ejecutarComandoSql($comandoSql);
+		if ( $objControlConexion->ejecutarComandoSql($comandoSql) )
+		{
+			$mData = true;
+		}
+		else {  
+			$mData = false;	
+		}
 		$objControlConexion->cerrarBd();
+		return $mData;
                  
 	}
 }
