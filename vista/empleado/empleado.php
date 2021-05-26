@@ -1,4 +1,22 @@
-<?php
+ <?php
+ session_start();
+ $a = $_SESSION['Usuarios'];
+ //var_dump($a);
+  if(isset($a)) {
+     $b = $a['Nombre_Cargo'];
+      if($b != "Administrador") {
+       echo '<script type="text/javascript">';
+       echo 'alert("Usted no tiene permiso ver esta página");';
+       echo 'window.location="../../vista/login/login.php";';
+       echo '</script>';
+     //   header('Location: login.php');       
+      }
+  } else {
+     echo '<script type="text/javascript">';
+     echo 'alert("Debe Iniciar Sesión primero");';
+     echo 'window.location="../../vista/login/login.php";';
+     echo '</script>';
+  }
 include '../../controlador/controlconexion.php';
 include '../../modelo/empleado/empleado.php';
 include '../../controlador/controlempleado.php'; 

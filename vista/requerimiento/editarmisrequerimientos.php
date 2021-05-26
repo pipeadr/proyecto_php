@@ -1,10 +1,10 @@
 <?php
 session_start();
 $a = $_SESSION['Usuarios'];
-//var_dump($a);
+//var_dump($a['IDEMPLEADO']);
  if(isset($a)) {
     $b = $a['Nombre_Cargo'];
-     if(($b == "Empleado") || ($b == "Lider")) {
+     if($b == "Empleado") {
       echo '<script type="text/javascript">';
       echo 'alert("Usted no tiene permiso ver esta página");';
       echo 'window.location="../../vista/login/login.php";';
@@ -20,15 +20,7 @@ $a = $_SESSION['Usuarios'];
 include '../../controlador/controlconexion.php';
 include '../../controlador/ControlDetalleReq.php';
 include '../../modelo/requerimineto/DetalleReq.php';
-
-// $db = new controlconexion();
-// $db->abrirBd("localhost","root","","mesa_ayuda");
-// $comandoSql = "select * from detallereq";
-// $rs = $db->ejecutarSelect($comandoSql);
-// $registros = $rs->fetch_all(MYSQLI_ASSOC);
-// $db->cerrarBd();
-/*Consultar Área y datallereq */
-// $comandoSql = "select * from empleado where IDEMPLEADO = '".$IDEMPLEADO."'";
+$fkEmpleadoAgignado = $a['IDEMPLEADO'];
 $dba = new controlconexion();
 $dba->abrirBd("localhost","root","","mesa_ayuda");
 $comandoSqla = "SELECT detalle.IDDETALLE, detalle.FECHA, detalle.OBSERVACION, detalle.FKREQ,
@@ -43,13 +35,12 @@ INNER JOIN area ar ON req.FKAREA = ar.IDAREA AND detalle.FKREQ = req.IDREQ
 INNER JOIN estado esta ON detalle.FKESTADO = esta.IDESTADO 
 INNER JOIN empleado per ON detalle.FKEMPLE = per.IDEMPLEADO
 INNER JOIN empleado jef ON detalle.FKEMPLEASIGNADO = jef.IDEMPLEADO
-ORDER BY detalle.IDDETALLE";
+WHERE FKEMPLEASIGNADO = '".$fkEmpleadoAgignado."'";
 $rsa = $dba->ejecutarSelect($comandoSqla);
 $registrosa = $rsa->fetch_all(MYSQLI_ASSOC);
 $dba->cerrarBd();
-//var_dump($registrosa);
+// var_dump($registrosa);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -40,7 +40,8 @@ $a = $_SESSION['Usuarios'];
       </form>
 
      <!-- <a class="botones" href="../empleado/empleado.php">Editar Empleados</a> -->
-     <a class="botones" href="../requerimiento/mostrarrequerimineto.php">Editar Requerimientos</a>
+     <a class="botones" href="../requerimiento/mostrarrequerimineto.php">Editar mis Requerimientos</a>
+     <a class="botones" href="../requerimiento/editarmisrequerimientos.php">Ver Mis Requerimientos</a>
      <a class="botones" href="cerrar_sesion.php">Cerrar Sesión</a>
       <!-- <form method="post" action="" class="hijo">
     <input class="botones"  type="submit" name="btn" value="Cerrar Sección">

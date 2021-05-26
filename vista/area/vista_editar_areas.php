@@ -28,9 +28,9 @@ if($r)
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<h1>Bienvenido</h1>
-
-<p>El estado al crear el Área es: <?php echo $rpesta_clta; ?></p>
-<a href="area.php">Volver a Área</a>
+<script type="text/javascript">
+alert("<?php echo $rpesta_clta ; ?>");
+window.location='area.php';
+</script>
 </body>
 </html>

@@ -1,55 +1,44 @@
 <?php
 session_start();
 $a = $_SESSION['Usuarios'];
-//var_dump($a);
+//var_dump($a['IDEMPLEADO']);
  if(isset($a)) {
-    $b = $a['Nombre_Cargo'];
-     if(($b == "Empleado") || ($b == "Lider")) {
-      echo '<script type="text/javascript">';
-      echo 'alert("Usted no tiene permiso ver esta página");';
-      echo 'window.location="../../vista/login/login.php";';
-      echo '</script>';
-    //   header('Location: login.php');       
-     }
+    // $b = $a['Nombre_Cargo'];
+    //  if($b == "Empleado") {
+    //   echo '<script type="text/javascript">';
+    //   echo 'alert("Usted no tiene permiso ver esta página");';
+    //   echo 'window.location="../../vista/login/login.php";';
+    //   echo '</script>';
+    // //   header('Location: login.php');       
+    //  }
  } else {
     echo '<script type="text/javascript">';
     echo 'alert("Debe Iniciar Sesión primero");';
     echo 'window.location="../../vista/login/login.php";';
     echo '</script>';
  }
-include '../../controlador/controlconexion.php';
+ include '../../controlador/controlconexion.php';
 include '../../controlador/ControlDetalleReq.php';
 include '../../modelo/requerimineto/DetalleReq.php';
-
-// $db = new controlconexion();
-// $db->abrirBd("localhost","root","","mesa_ayuda");
-// $comandoSql = "select * from detallereq";
-// $rs = $db->ejecutarSelect($comandoSql);
-// $registros = $rs->fetch_all(MYSQLI_ASSOC);
-// $db->cerrarBd();
-/*Consultar Área y datallereq */
-// $comandoSql = "select * from empleado where IDEMPLEADO = '".$IDEMPLEADO."'";
+$fkEmpleadoAgignado = $a['IDEMPLEADO'];
 $dba = new controlconexion();
 $dba->abrirBd("localhost","root","","mesa_ayuda");
-$comandoSqla = "SELECT detalle.IDDETALLE, detalle.FECHA, detalle.OBSERVACION, detalle.FKREQ,
+$comandoSqla = "SELECT detalle.IDDETALLE, detalle.FECHA, detalle.OBSERVACION, detalle.FKREQ, detalle.FKEMPLE AS minombre,
 req.FKAREA,
 ar.NOMBRE AS NOMBRE_AREA,
 esta.NOMBRE AS NOMBRE_ESTADO,
-per.NOMBRE AS NOMBRE_PERSONAL,
-jef.NOMBRE AS NOMBRE_JEFE
+per.NOMBRE AS NOMBRE_PERSONAL
 FROM detallereq detalle
 INNER JOIN requerimiento req
 INNER JOIN area ar ON req.FKAREA = ar.IDAREA AND detalle.FKREQ = req.IDREQ 
 INNER JOIN estado esta ON detalle.FKESTADO = esta.IDESTADO 
 INNER JOIN empleado per ON detalle.FKEMPLE = per.IDEMPLEADO
-INNER JOIN empleado jef ON detalle.FKEMPLEASIGNADO = jef.IDEMPLEADO
-ORDER BY detalle.IDDETALLE";
+WHERE detalle.FKEMPLE = '".$fkEmpleadoAgignado."'";
 $rsa = $dba->ejecutarSelect($comandoSqla);
 $registrosa = $rsa->fetch_all(MYSQLI_ASSOC);
 $dba->cerrarBd();
-//var_dump($registrosa);
+// var_dump($registrosa);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,10 +60,8 @@ $dba->cerrarBd();
      <th>Observación</th>
      <th>Área</th>
      <th>Estado</th>
-     <th>Persona Radicada</th>
-     <th>Encargado</th>
-     <th>editar</th>
-     <th>eliminar</th>
+     <th>Mi nombre</th>
+     <!-- <th>Encargado</th> -->
      </tr>
      </thead>
     
@@ -86,23 +73,7 @@ $dba->cerrarBd();
       <td><?php echo $regi["NOMBRE_AREA"];  ?></td>
       <td><?php echo $regi["NOMBRE_ESTADO"];  ?></td>
       <td><?php echo $regi["NOMBRE_PERSONAL"];  ?></td>
-      <td><?php echo $regi["NOMBRE_JEFE"];  ?></td>
-      <td> 
-    <?php if($regi["NOMBRE_ESTADO"] == "Cancelado" || $regi["NOMBRE_ESTADO"] == "Solucionado Totalmente") 
-     {
-     ?> 
-      <i class="far fa-eye-slash"></i>
-    <?php  
-     } else {
-    ?>
-    <a href="editar_requerimiento.php?id=<?php echo $regi["IDDETALLE"];?>"><i class="fas fa-edit"></i></a>
-    <?php  
-     }
-    ?>
-    </td>
-    <td>
-    <a href="eliminar_requerimiento.php?id=<?php echo $regi["IDDETALLE"];?>"><i class="fas fa-trash-alt"></i></a>
-    </td>
+      <!-- <td><?php echo $regi["NOMBRE_JEFE"];  ?></td> -->
      </tr>
       <?php }?>
   

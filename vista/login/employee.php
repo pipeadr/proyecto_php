@@ -38,7 +38,7 @@ $a = $_SESSION['Usuarios'];
     <input class="botones"  type="submit" name="btn" value="Registrar Requerimiento">
     <input class="botones" type="hidden" name="Id_empleado"  value="<?php echo $a['IDEMPLEADO']; ?>">
       </form>
-     <a class="botones" href="../requerimiento/mostrarrequerimineto.php">Ver Mis Requerimientos</a>
+     <a class="botones" href="../requerimiento/verrequerimientos.php">Ver Mis Requerimientos</a>
      <a class="botones" href="cerrar_sesion.php">Cerrar Sección</a>
       <!-- <form method="post" action="" class="hijo"> 
     <input class="botones"  type="submit" name="btn" value="Cerrar Sección">
