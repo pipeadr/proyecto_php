@@ -34,12 +34,7 @@ $a = $_SESSION['Usuarios'];
   <h3 class="sub-title">¿Que desea hacer?</h3>
    
     <div class="padre">
-    <form class="hijo" method="post" action="../requerimiento/radicarRequerimiento.php"> 
-    <input class="botones"  type="submit" name="btn" value="Registrar Requerimiento">
-    <input class="botones" type="hidden" name="Id_empleado"  value="<?php echo $a['IDEMPLEADO']; ?>">
-      </form>
-
-     <a class="botones" href="../empleado/empleado.php">Editar Empleados</a> <br>
+     <a class="botones" href="informes01.php">Infome #1</a>
      <a  class="botones" href="../area/area.php">Editar Áreas</a>
      <a class="botones" href="../requerimiento/mostrarrequerimineto.php">Editar Requerimientos</a>
      <a class="botones" href="../informes/informes.php">Ver Informes</a>
