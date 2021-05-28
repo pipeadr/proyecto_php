@@ -35,9 +35,11 @@ $a = $_SESSION['Usuarios'];
    
     <div class="padre">
      <a class="botones" href="informes01.php">Infome #1</a>
-     <a  class="botones" href="../area/area.php">Editar Áreas</a>
-     <a class="botones" href="../requerimiento/mostrarrequerimineto.php">Editar Requerimientos</a>
-     <a class="botones" href="../informes/informes.php">Ver Informes</a>
+     <a  class="botones" href="informes02.php">Informe #2</a>
+     <a class="botones" href="">Informe #3</a>
+     <a class="botones" href="informes04.php">Informe #4</a>
+     <a class="botones" href="informes05.php">Informe #5</a>
+     <a class="botones" href="">Informe #6</a>
      <a class="botones" href="cerrar_sesion.php">Cerrar Sección</a>
       <!-- <form method="post" action="" class="hijo"> 
     <input class="botones"  type="submit" name="btn" value="Cerrar Sección">
