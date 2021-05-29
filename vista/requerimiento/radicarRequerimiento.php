@@ -50,6 +50,7 @@ $db->cerrarBd();
       <div class="hijo">
       <input class="botones" type="submit" value="Radicar">
       <input class="botones" type="reset" value="Limpiar">
+      <a class="botones" href="http://localhost/proyecto_php/vista/login/admin.php">Volver</a>
       </div>
      </form>
      </div>

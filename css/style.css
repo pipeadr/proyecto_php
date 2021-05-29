@@ -159,7 +159,7 @@ div.hijo-p {
 .noinput {
     background-color: rgba(144,238,144, 0.1);
     border: 1px solid rgba(144,238,144, 0.1);
-    border-radius: 10px;
+    border-radius: 7px;
     cursor: pointer;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
@@ -209,3 +209,92 @@ div.hijo-p {
     padding-top: 10px; */
     color: #90EE90;
 }
+/*Tabla*/
+.table_re {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem;
+}
+table.tabla_empleados {
+    text-align: center;
+    border-collapse: collapse;
+    /* border: 1px solid #90EE90; */
+}
+table.tabla_empleados tr th,
+table.tabla_empleados tr td {
+    padding: 0.4rem;
+    
+}
+table.tabla_empleados thead {
+    background-color: #90EE90;
+    /* transform: skewX(-3deg); */
+    /* transform: rotate(1deg); */
+}
+table.tabla_empleados thead tr th {
+    font-size: 1.5rem;
+}
+table.tabla_empleados tr td {
+    font-size: 1.4rem;
+    padding: 0.4rem;
+    color: #90EE90;
+}
+table.tabla_empleados tr td a {
+    color: #90EE90;
+}
+table.tabla_empleados tr {
+    border: 1px solid #90EE90;
+    border-top: 0px;
+}
+/*Inputs Files*/
+.file-select {
+    position: relative;
+    display: inline-block;
+}
+.file-select::before {
+  background-color: #90EE90;
+  color: #000;
+  display: flex;            
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  content: 'Imagen Usuario'; /* texto por defecto */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;    
+}
+.file-select input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;
+    cursor: pointer;      
+  }
+  /*Inputs Files*/
+.file-pdf {
+    position: relative;
+    display: inline-block;
+}
+.file-pdf::before {
+  background-color: #90EE90;
+  color: #000;
+  display: flex;            
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  content: 'Hoja de vida'; /* texto por defecto */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;    
+}
+.file-pdf input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;
+    cursor: pointer;      
+  }

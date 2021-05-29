@@ -54,8 +54,6 @@ $db->cerrarBd();
  $cargos = $rs_->fetch_all(MYSQLI_ASSOC);
  $db->cerrarBd();
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -67,8 +65,7 @@ $db->cerrarBd();
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-    <center>
-     <h1>Empleados</h1>
+     <h1 class="title-home">Empleados</h1>
      <div class="table_re">
      <table class ="tabla_empleados">
      <thead>
@@ -79,7 +76,7 @@ $db->cerrarBd();
      <th>HV</th>
      <th>telefono</th>
      <th>Correo</th>
-     <th>Dirrección</th>
+     <th>Dirección</th>
      <th>X</th>
      <th>Y</th>
      <th>Cargo</th>
@@ -90,7 +87,6 @@ $db->cerrarBd();
      </tr>
      </thead>
      <?php foreach($registros as $registro) {?>
-     
      <tr>
       <td><?php echo $registro["IDEMPLEADO"];  ?></td>
       <td><?php echo $registro["NOMBRE"];  ?></td>
@@ -111,86 +107,52 @@ $db->cerrarBd();
      </table>
      </div>   
      <!-- Inicio insert -->
-     
-    <hr>
-    <h3 class="title-em">Ingresar Nuevos Empleados</h3> 
-      <form method="post"  action="insertar_emp.php" enctype="multipart/form-data">
 
-      <div class="home">  
-          <div class="elmto-emple">
-          <p class="p-emple">ID:</p>
-          <input class="btn_empl" type="text" name="txtID" required="">
-          <p class="p-emple">Nombre:</p>
-          <input class="btn_empl" type="text" name="txtNombre" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" title="Ingrese su nombre completo, con apellidos">
-          </div>   <!--div elmto-emple-->
-
-          <div class="elmto-emple">
-          <p class="p-emple">Foto:</p>
-          <input type="file" name="foto_em" accept="image/*" required="" x-moz-errormessage="Por favor, ingrese un archivo válido.">
-          <p class="p-emple">HV:</p>
-          <input type="file" name="HV_em" accept="application/pdf" required="" x-moz-errormessage="Por favor, ingrese un archivo válido.">
-          </div>   <!--div elmto-emple-->
-
-          <div class="elmto-emple">
-          <p class="p-emple">Télefono:</p>
-          <input class="btn_empl" type="tel" name="txtTelefono">
-          <p class="p-emple">Email:</p>
-          <input class="btn_empl" type="email" name="mail" id="" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" size="30" x-moz-errormessage="Por favor, especifique una dirección de correo válida." required="">
-          </div>   <!--div elmto-emple-->
-
-          <div class="elmto-emple">
-          <p class="p-emple">Dirección:</p>
-          <input class="btn_empl"  type="text" name="direccion" id="" title="Ingrese la dirección de su ubicación inluyendo múnicipio">
-          <p class="p-emple">Jefe:</p>
-          <select  name="select_jefe" id="">
-            <option value ="0">Seleccionar Jefe</option>
-            <?php foreach($registros as $registro) {  ?>
-            <option name="select_jefe" value ="<?php echo $registro["IDEMPLEADO"];?>"><?php echo $registro["NOMBRE"];?></option>  
-            <?php } ?>
-            </select>
-          </div>   <!--div elmto-emple-->
-
-          <div class="elmto-emple">
-          <p class="p-emple">Cargo:</p>
-          <select  name="select_cargo" id="">
-            <?php foreach($cargos  as $cargo) { ?>
-            <option name="select_cargo" value ="<?php echo $cargo["IDCARGO"];?>"><?php echo $cargo["NOMBRE"]; ?></option>  
-            <?php } ?>
-            </select>
-            <p class="p-emple">Fecha ingreso:</p>
-            <input type="date" name="Fecha_creac" id="" required>
-          
-          </div>
-                   <input type="hidden" name="latitu" id="latitude_" value="">
-                   <input type="hidden" name="longi" id="longitude_" value="">
-          <div class="elmto-emple">
-          <p class="p-emple">Área:</p>
-          <select  name="select_area" id="">
-            <option value ="0">Seleccionar Area</option>
-            <?php foreach($cnslta_areas  as $cnslta_area) {  ?>
-            <option name="select_area" value ="<?php echo $cnslta_area["IDAREA"];?>" required><?php echo $cnslta_area["NOMBRE"]; ?></option>  
-            <?php } ?>
-            </select>
-          <p class="p-emple">Contraseña:</p>
-          <input class="btn_empl" type="password" name="password_emple" id="" pattern="[A-Za-z0-9!?-]{8,12}" title="Debe tener mínimo 8 caracteres " required>
-          </div>   <!--div elmto-emple-->
-
-          <table>           
-           <!-- <input type="hidden" name="oculto" value="1"> -->
-            <tr>
-              <td><input class="botones"  type="reset"></td>
-              <td><input class="botones" type="submit" value="Ingresar Empleado"></td>
-            </tr>
-          </table>
-       </div>
-      </form>
-
+    <h2 class="sub-title-home">Ingresar Nuevos Empleados</h2>
+      <div class="home">
+          <form class="hijo"  method="post"  action="insertar_emp.php" enctype="multipart/form-data">
+             <input type="hidden" name="latitu" id="latitude_" value="">
+             <input type="hidden" name="longi" id="longitude_" value="">
+            <input class="btn_empl input" type="text" name="txtID" required placeholder="ID">
+            <input class="btn_empl input" type="text" name="txtNombre" required placeholder="Nombre"  pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" title="Ingrese su nombre completo, con apellidos">
+            <div class="file-select">
+              <input type="file" name="foto_em" accept="image/*" required="" x-moz-errormessage="Por favor, ingrese un archivo válido.">
+            </div>
+              <div class="file-pdf">
+               <input type="file" name="HV_em" accept="application/pdf" required x-moz-errormessage="Por favor, ingrese un archivo válido.">
+              </div>
+              <input class="btn_empl input" type="tel" name="txtTelefono" placeholder="Télefono">
+              <input class="btn_empl input" type="email" name="mail" id="" placeholder="Correo" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" size="30" x-moz-errormessage="Por favor, especifique una dirección de correo válida." required>
+              <input class="btn_empl input"  type="text" name="direccion" id="" placeholder="Dirección" title="Ingrese la dirección de su ubicación inluyendo múnicipio"> 
+                <select class="noinput" name="select_jefe" id="">
+               <option value ="0">Seleccionar Jefe</option>
+                <?php foreach($registros as $registro) {  ?>
+               <option name="select_jefe" value ="<?php echo $registro["IDEMPLEADO"];?>"><?php echo $registro["NOMBRE"];?></option>  
+                <?php } ?>
+               </select>
+               <select  class="noinput" name="select_cargo" id="">
+                 <option value ="0">Seleccionar Cargo</option>
+                 <?php foreach($cargos  as $cargo) { ?>
+                 <option name="select_cargo" value ="<?php echo $cargo["IDCARGO"];?>"><?php echo $cargo["NOMBRE"]; ?></option>  
+                <?php } ?>
+              </select>
+              <input type="date" name="Fecha_creac" id="" required class="input" title="Fecha ingreso">
+               <select class="noinput" name="select_area" id="">
+                <option value ="0">Seleccionar Area</option>
+                <?php foreach($cnslta_areas  as $cnslta_area) {  ?>
+                <option name="select_area" value ="<?php echo $cnslta_area["IDAREA"];?>" required><?php echo $cnslta_area["NOMBRE"]; ?></option>  
+                <?php } ?>
+              </select>
+              <input class="btn_empl input" placeholder="Contraseña" type="password" name="password_emple" id="" pattern="[A-Za-z0-9!?-]{8,12}" title="Debe tener mínimo 8 caracteres " required>        
+              <input class="botones"  type="reset">
+              <input class="botones" type="submit" value="Ingresar Empleado">
+              <a class="botones" href="http://localhost/proyecto_php/vista/login/admin.php">Volver</a>
+            </form>
+           
+      </div>
     <!-- fin insert -->
-
-     </center> 
 </body>
 <script src="https://kit.fontawesome.com/176c817b83.js" crossorigin="anonymous"></script>
-
 <script src="../../js/main.js">
 </script>
 </html>
