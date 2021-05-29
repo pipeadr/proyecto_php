@@ -1,348 +1,211 @@
-*
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-*,*:after,*:before{
-    box-sizing: border-box;
-  }
-body
+html
 {
-    /* background-image: url("https://i.imgur.com/B2q5Dxu.jpg"); 
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #1D265B; */
-    background-image: radial-gradient(circle at 118.3% 68.3%, #6dbfff 0, #547faf 50%, #36455a 100%);
-    width: 100%;
-    height: 100%;
-    /* overflow: hidden; */
-    box-sizing: border-box;
+    font-size: 62.5%;
+}
+body {
     font-family: 'Ubuntu', sans-serif;
-    color: #fff;
-    
+    /*background-color: #581845;*/
+    background-color: #18171c; /*18171c  ADD8E6*/
 }
-
-div.padre-login
-{
-    margin-top:  50px;
+/*Menu principal*/
+.header--nav {
+    width: 100%;
 }
-h1
-{
-    text-align: center;
-    font-size: 30px;
-    color: #ffffff;
-    margin-bottom: 30px;
-    font-weight: 900;
-}
- h1.title-home /*Home*/
- {
-     padding-top: 30px;
- }
-div.ppl
-{
+.header--nav__ul {
     display: flex;
-    border: 1px solid #ffffff;
-    border-radius: 13px;
-    width: 50%;
-    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2.2rem;
+    list-style: none;
 }
-div.hijo
-{
- padding: 60px;
+.sub_menu {
+    font-size: 2rem;
+    /* padding: 1rem 2.5rem 1rem 1rem; */
+    padding: 1.9rem;
+    color: #90EE90;
+    border: 1px solid transparent; 
 }
-
-label.login
-{
-    color: #ffffff;
-    font-size: 22px;
+.sub_menu i,
+.sub_menu a {
+    color: #90EE90; 
+    text-decoration: none;
 }
-
-input.login
-{
-  margin-top: 15px;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  padding: 5px;
-  outline: none;
+.sub_menu:hover {
+    border: 1px solid #90EE90; 
 }
-
-input
-{
-    margin-top: 20px;
-    color: #fff;  
-    background-color: transparent;
-    padding: 15px;
-    border: 1px solid #fff;
-    border-radius: 10px;
-    outline: none;
-    font-size: 16px;
-    transition: all 0.6s ease;
+.sub_menu:focus {
+    border: 1px solid #90EE90; 
 }
-
-input.btn-enivar:hover
-{
-    background-color: #fff;
-    color: RGB(85, 127, 175);
-    border-radius: 0px;
-    transition: 0.1;
-    transition: all 0.6s ease;
-    
-}
-
-
-/*Menú ppl*/
-
-ul.menu 
-{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-  font-size: 20px;
-  margin: 2px;
-  transition: all 0.6s ease;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-
-}
-ul li.sub_menu
-{
-  /* margin-right: 20px;  */
-  /* width: 20%; */
-  padding: 25px;
-  box-sizing: border-box;
-  border: 1px solid transparent;
-  transition: all 0.6s ease;
-}
-ul li.sub_menu:hover {
-    border: 1px solid #ffffff;
-    transition: all 0.6s ease;
-    box-sizing: border-box;
-}
-
-ul li.sub_menu i
-{
-  color: #f4f4f4;
-}
-
-/* Home*/
+/*HOME*/
 div.home
 {
-    width: 80%;
-    margin:  0 auto;
-    border: 2px solid #ffffff;
-}
-h2.sub-title-home,
-h3.sub-title
-{
-    text-align: center;
-}
-div.parrafo
-{
-  width: 80%;
-  margin: 0 auto;
-  padding-top: 35px;
-  padding-bottom: 80px; 
-}
-div.parrafo p
-{
- line-height: 27px;
- text-align: justify;
-}
-
-a.botones,
-input.botones
-{
-    margin-top: 20px;
-    margin-right: 35px;
-    text-decoration: none;
-    color: #fff;  
-    background-color: transparent;
-    padding: 15px;
-    border: 1px solid #fff;
-    border-radius: 10px;
-    font-size: 16px;
-    outline: none;
-    transition: all 0.6s ease;
-}
-a.botones:hover,
-input.botones:hover
-{
-  color: #4b6e96;
-  background-color: #ffffff;
-  cursor: pointer;
-  outline: none;
-}
-
-div.padre
-{   
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid #90EE90; 
+    padding: 3rem;
+}
+h1.title-home,
+h2.sub-title-home {
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2.8rem;
+    margin: 1.2rem;
+    color: #90EE90;
+    font-weight: 900;
+}
+h2.sub-title-home {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+p.p {
+    text-align: justify;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.7rem;
+    color: #90EE90;
+    line-height: 2.5rem;
+    margin: 4rem 1.5rem 1.5rem 1.5rem;
+}
+/*Login*/
+.form--login {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: 2rem auto;
+    padding: 6rem;
+    border: 1px solid #90EE90;
+    border-radius: 10%;
+}
+.input {
+    background-color: transparent;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    margin-bottom: 2rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.6rem;
+    padding: 5px 20px;
+    outline: none;
+    height: 5rem;
+    color: #90EE90;
+    border-bottom: 1px solid #90EE90;
+}
+.input::placeholder {
+    color: #90EE90;
+}
+.btn-enviar {
+    background-color: rgba(144,238,144, 0.1);
+    border: 1px solid rgba(144,238,144, 0.1);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    height: 3.5rem;
+    letter-spacing: 2px;
+    color: #90EE90;
+    margin: 10px 0px;
+    outline: none;
+    font-size: 1.6rem;
+}
+/*Menus internos*/
+.padre {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-top:  50px;
-    max-width: 100%;
-    box-sizing: border-box;
+    margin: 6rem 0;
+    align-content: space-around;
+}
+.botones {
+    background-color: rgba(144,238,144, 0.1);
+    border: 1px solid rgba(144,238,144, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #90EE90;
+    margin: 0rem 1rem 1.8rem 1rem;
+    font-size: 1.6rem;
+    padding: 1.5rem;
+    outline: none;
+}
+a.botones {
+    text-decoration: none;
+}
+.botones:hover,
+a.botones:hover {
+    background-color: rgba(144,238,144, 0.9);
+    color: #000;
+    border-radius: 0px;
+}
+div.hijo {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
     justify-content: center;
-    margin-bottom: 80px;
 }
-div.hijo-form
-{
-    display:  flex;
-    max-width: 100%;
-    box-sizing: border-box;
+div.hijo-p {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    
 }
-div.elmto-1
-{
-    align-items: flex-end;
+.noinput {
+    background-color: rgba(144,238,144, 0.1);
+    border: 1px solid rgba(144,238,144, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    height: 4rem;
+    letter-spacing: 2px;
+    color: #90EE90;
+    margin-right: 2rem;
+    outline: none;
+    font-size: 1.6rem;
 }
-div.elmto-2
-{
-  margin-left: 40px;
+.noinput option { 
+    color:#000; 
+    background-color:transparent; 
 }
-div.elmto-2 p {
+.fecha {
+    background-color: rgba(144,238,144, 0.1);
+    border: 1px solid rgba(144,238,144, 0.1);
+    border-radius: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #90EE90;
+    outline: none;
+    font-size: 1.6rem;
     text-align: center;
 }
-select
-{
-    width: 200px;
-    color: #ffffff;
-    background-color: transparent;
-    border: 1px solid  #fff;
-    padding: 0px;
-    margin: 0;
-    height: 50px;
-    border-radius: 10px;
-}
-option { color:#4b6e96; background-color:transparent; }
-div.elmto-1
-{
-    display: flex;
-    padding: 0;
-    justify-content: center;
-}
-div.requerimiento
-{
-    width: 80%;
-    margin:  0 auto;
-    border: 2px solid #ffffff;
-}
-/*Text Area*/
-textarea {
+.textarea {
     resize: none;
-    width: 300px;
-    height: 200px;
-    border: 1px solid #fff;
+    text-align: center;
+    background-color: rgba(144,238,144, 0.1);
+    border: 1px solid rgba(144,238,144, 0.1);
     border-radius: 10px;
-    color: #4b6e96;
-    text-align: center;
-    font-size: 18px;
-    padding-top: 15px;
-}
-textarea::placeholder {
-    color: #4b6e96;
-    text-align: center;
-    font-size: 18px;
-    padding-top: 10px;
-}
-div.elmto-3
-{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 30px;
-}
-div.elmto-4
-{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-bottom: 20px;
-}
-h3.re
-{
-    text-align: center;
-    margin-top: 30px;
-}
-
-div.tabla-em
-{
-  display: flex;
-  justify-content: center;
-  width: 80%;
-  margin: 0 auto;
-}
-p.text-emple
-{
-    padding: 10px;
-    width: 10%;
-}
-/*Tables*/
-div.table_re
-{
-    margin: 35px auto;
-    width: 100%;
-}
-table.tabla_empleados
-{
-  background-color: transparent;
-  border-collapse: collapse;
-  text-align: center;
-}
-/* table.tabla_empleados tr:hover,
-a:hover
-{
-  background-color: #ffffff;
-  color: #4b6e96;
-} */
-table.tabla_empleados th, table.tabla_empleados td
-{
-    border: 1px solid #ffffff;
-    padding: 5px;
-}
-i, a
-{
-    color: #ffffff;
-}
-h3.title-em
-{
-    margin-top: 35px;
-    margin-bottom: 30px;
-}
-div.elmto-emple
-{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-input.btn_empl
-{
-    margin-top: 0px!important;
-    margin-right: 35px;
-    text-decoration: none;
-    color: #fff;
-    background-color: transparent;
-    padding: 0px!important;
-    border: 1px solid #fff;
-    border-radius: 10px;
-    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #90EE90;
     outline: none;
-    transition: all 0.6s ease;
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 7.5rem;
+    margin: 2rem 0;
 }
-p.p-emple
-{
-    padding: 15px;
-    display: flex;
-    align-items: center;
+.textarea::placeholder {
+    /* color: #4b6e96;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 10px; */
+    color: #90EE90;
 }

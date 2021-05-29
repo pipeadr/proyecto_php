@@ -24,48 +24,35 @@ $db->cerrarBd();
 </head>
 <body>
 <?php include("../../header.php");?>
-   <div class="requerimiento">
+   <div class="home">
      <h1 class="title-home">Registrar Requerimiento</h1>
-     
+     <div class="">
      <form method="post" action="vista_radicar_requerimiento.php">  
-
-      <!--<div class="hijo-form">-->
-      <!--<label for="">Seleccione el Área</label>-->
-     
-      <div class="elmto-1">
-      <select  name="cbx_area" id="">
-      <option value ="0">Seleccionar Area</option>
-      <?php foreach($cnslta_areas as $cnslta_area) {  ?>
-      <option name="Areas_" value ="<?php echo $cnslta_area["IDAREA"] ?> "><?php echo $cnslta_area["NOMBRE"]?></option>  
-      <?php } ?>
-      </select>
-      
-      <?php   
-        date_default_timezone_set('America/Bogota');
-        $fecha_actial = date("Y-m-d H:i:s");
-      ?>
-      <div class="elmto-2">
-        <p>Fecha Actual:</p>
-        <input type="datetime" name="txtFECHA"   value="<?php echo $fecha_actial; ?>" readonly>
-      </div>
-      </div>
-   
-      <div class="elmto-3">
-      
-      <textarea name="txtOBSERVACION"   id="" placeholder="Ingrese su observación" required></textarea>
-      </div>
-
-
+         <div class="hijo">
+           <select class="noinput" name="cbx_area" id="" required >
+            <option value ="0">Seleccionar Area</option>
+             <?php foreach($cnslta_areas as $cnslta_area) {  ?>
+              <option name="Areas_" value ="<?php echo $cnslta_area["IDAREA"] ?> "><?php echo $cnslta_area["NOMBRE"]?></option>  
+               <?php } ?>
+           </select>
+             <?php   
+            date_default_timezone_set('America/Bogota');
+            $fecha_actial = date("Y-m-d H:i:s");
+           ?>
+            <!-- <p>Fecha Actual:</p> -->
+           <input class="fecha" type="datetime" title="Fecha Actual" name="txtFECHA"   value="<?php echo $fecha_actial; ?>" readonly>
+         </div>
+         <div class="hijo-p">
+           <textarea class="textarea" name="txtOBSERVACION"   id="" placeholder="Ingrese su observación" required></textarea>
+         </div>
       <input type="hidden" name="Id_empleado"  value="<?php echo "$ID_EMPLEADO"; ?>" required>
       <input type="hidden" name="Estado_requisito"  value="1">
-
-      <div class="elmto-4">
-      <input class="botones" type="submit" value="Radicar"> <br>
+      <div class="hijo">
+      <input class="botones" type="submit" value="Radicar">
       <input class="botones" type="reset" value="Limpiar">
       </div>
-       
      </form>
-     
+     </div>
       </div>
       
 </body>

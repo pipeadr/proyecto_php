@@ -31,7 +31,7 @@ $a = $_SESSION['Usuarios'];
 <?php include("../../header.php");?>
  <div class="home">
  <h1 class="title-home">Bienvenido <?php echo $a['NOMBRE']; ?></h1>
-  <h3 class="sub-title">¿Que desea hacer?</h3>
+  <h2 class="sub-title-home">¿Que desea hacer?</h2>
    
     <div class="padre">
     <form class="hijo" method="post" action="../requerimiento/radicarRequerimiento.php"> 

@@ -15,7 +15,7 @@
       <h1 class="title-home">Proyecto PHP</h1>
       <h2 class="sub-title-home">Grupo Sábados 14:00 hrs - 16 hrs</h2>
        <div class="parrafo">
-       <p>Lorem ipsum dolor sit amet consectetur aadipiscing elit vivamus, aenean curae dictumst lectus molestie diam eget ut, habitasse hac mollis himenaeos iaculis vestibulum dui. Habitasse eros gravida sollicitudin condimentum est velit laoreet tristique convallis, rhoncus malesuada hendrerit accumsan ornare dictumst vel ut at sociis, nibh justo varius mollis phasellus netus eleifend arcu. Feugiat malesuada phasellus hac orci condimentum justo vel rutrum pulvinar, nam auctor curae nostra vitae a interdum per, sociosqu natoque duis taciti inceptos suspendisse potenti sem OMG.</p>
+       <p class="p">Lorem ipsum dolor sit amet consectetur aadipiscing elit vivamus, aenean curae dictumst lectus molestie diam eget ut, habitasse hac mollis himenaeos iaculis vestibulum dui. Habitasse eros gravida sollicitudin condimentum est velit laoreet tristique convallis, rhoncus malesuada hendrerit accumsan ornare dictumst vel ut at sociis, nibh justo varius mollis phasellus netus eleifend arcu. Feugiat malesuada phasellus hac orci condimentum justo vel rutrum pulvinar, nam auctor curae nostra vitae a interdum per, sociosqu natoque duis taciti inceptos suspendisse potenti sem OMG.</p>
        </div>
       
   </div>

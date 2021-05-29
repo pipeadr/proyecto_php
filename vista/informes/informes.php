@@ -31,7 +31,7 @@ $a = $_SESSION['Usuarios'];
 <?php include("../../header.php");?>
  <div class="home">
  <h1 class="title-home">Bienvenido <?php echo $a['NOMBRE']; ?></h1>
-  <h3 class="sub-title">¿Que desea hacer?</h3>
+  <h2 class="sub-title-home">¿Que desea hacer?</h2>
    
     <div class="padre">
      <a class="botones" href="informes01.php">Infome #1</a>
@@ -40,7 +40,7 @@ $a = $_SESSION['Usuarios'];
      <a class="botones" href="informes04.php">Informe #4</a>
      <a class="botones" href="informes05.php">Informe #5</a>
      <a class="botones" href="">Informe #6</a>
-     <a class="botones" href="cerrar_sesion.php">Cerrar Sección</a>
+     <a class="botones" href="../login/cerrar_sesion.php">Cerrar Sección</a>
       <!-- <form method="post" action="" class="hijo"> 
     <input class="botones"  type="submit" name="btn" value="Cerrar Sección">
       </form> -->

@@ -32,30 +32,17 @@ if(isset( $_SESSION['Usuarios'])) {
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../../css/style.css">
 </head>
+<?php include("../../header.php");?>
 <body>
-<div class="padre-login">
-   <h1>Iniciar Sección</h1>
-     <div class="formulario_login">
-	 <!-- <form action="vista_login.php" method="POST"> -->
-     <form action="validar.php" method="POST">
-	 <div class="ppl">
-       <div class="hijo">
-	     <label for="em" class="login">Código Empleado</label>
-	      <input type="text"  id="em" class="login" name="txtEmpleado">
-	  </div>
-
-	  <div class="hijo">
-	    <label for="ps" class="login" >Contraseña</label>
-	  <input type="password" id="ps" class="login" name="txtContrasena">
-	  </div>
-	 </div>
-  <center>
-  <input class="btn-enivar" type="submit" name="btnEnviar">
-  </center>
-	
+<div>
+	  <h1 class="title-home">Iniciar Sesión</h1>
+	    <form class="form--login" action="validar.php" method="POST">
+		 <input class="input" type="text"  id="em" class="login" name="txtEmpleado" placeholder="ID Empleado">
+		 <input class="input" type="password" id="ps" class="login" name="txtContrasena" placeholder="Contraseña">
+		 <input class="btn-enviar" type="submit" name="btnEnviar"> 
 		</form>
+	</div>
 
-	 </div>
 	 <script src="https://kit.fontawesome.com/176c817b83.js" crossorigin="anonymous"></script>
 </div>
 </body>
