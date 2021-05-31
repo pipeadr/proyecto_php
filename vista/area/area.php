@@ -34,7 +34,7 @@ $db->cerrarBd();
 
 
  ?>
- <!DOCTYPE html>
+ <!DOCTYPE html> 
  <html lang="en">
  <head>
      <meta charset="UTF-8">
@@ -43,18 +43,20 @@ $db->cerrarBd();
      <title>Areas</title>
      <link rel="stylesheet" href="../../css/style.css">
  </head>
+ <?php include("../../header.php");?>
  <body>
- <center>
-     <h1>Áreas</h1>
+     <h1 class="title-home" >Áreas</h1>
      <div class="table_re">
      <table class ="tabla_empleados">
-     <tr>
-     <td>ID</td>
-     <td>Nombre Área</td>
-     <td>Nombre Lider Área</td>
-     <td>Editar</td>
-     <td>Área</td>
-     </tr>
+     <thead>
+      <tr>
+       <th>ID</th>
+       <th>Nombre Área</th>
+       <th>Nombre Lider Área</th>
+       <th>Editar</th>
+       <th>Área</th>
+      </tr>
+     </thead>
      <?php foreach($registros as $registro) {?>
      <tr>
       <td><?php echo $registro["IDAREA"];  ?></td>
@@ -76,38 +78,28 @@ $db->cerrarBd();
      <?php }?>    
      </table>
      </div>
-     <hr>
-    <h3>Ingresar una nueva área</h3>
-    <form method="post"  action="insertar_area.php">
-        <table>
-           <tr>
-            <td>ID:</td>
-            <td><input type="text" name="txtID" ></td>
-           </tr>
-           <tr>
-            <td>Nombre:</td>
-            <td><input type="text" name="txtname" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"></td>
-           </tr> 
-           <tr sty>
-            <td></td>
-               <td>
-                   <select style="margin-top: 20px;" name="select_lider" id="">
-                   <option value ="0">Seleccionar Jefe</option>
+     <div class="home">
+       <div class="table_re">
+       <h2 class="sub-title-home">Ingresar una nueva área</h2>
+        <form class="hijo" method="post"  action="insertar_area.php">
+             <input type="text" name="txtID" class="input"  placeholder="ID">
+             <input class="input"  placeholder="Nombre" type="text" name="txtname" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}">
+             <select class="noinput" name="select_lider" id="">
+                <option value ="0">Seleccionar Jefe</option>
                    <?php
-            foreach($empleados as $empleado) {  ?>
-            <option value ="<?php echo $empleado["IDEMPLEADO"];?>"><?php echo $empleado["NOMBRE"];?></option>
+                   foreach($empleados as $empleado) {  ?>
+                <option value ="<?php echo $empleado["IDEMPLEADO"];?>"><?php echo $empleado["NOMBRE"];?></option>
                    <?php } ?>
-                   </select>
-               </td>
-           </tr>
-           <tr>
-              <td><input class="botones" type="reset"></td>
-              <td><input class="botones" type="submit" value="Ingresar Empleado"></td>
-            </tr>
-           
-        </table>
-    </form>    
-</center>
+            </select>
+              <div>
+              <input class="botones" type="reset">
+              <input class="botones" type="submit" value="Ingresar Área">
+              <a class="botones" href="http://localhost/proyecto_php/vista/login/admin.php">Volver</a>
+              </div>
+        </form>
+       </div>
+     </div>
+   
  </body>
  <script src="https://kit.fontawesome.com/176c817b83.js" crossorigin="anonymous"></script>
  </html>

@@ -53,47 +53,33 @@ include '../../modelo/requerimineto/DetalleReq.php';
     <title>Editar Requerimiento</title>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
+<?php include("../../header.php");?>
 <body>
-<center>
-<form action="vista_editar_reque.php" method="post">
-    <table>
-      
-    <?php foreach($resultados as $resultado) {?>
-    
-    <!--Resultados Estados-->
-    <tr>
-    <td>Estado del Requerimiento</td>
-    <td>
-    <select  name="select_nameEstado" id="">    
-    <?php foreach($estados as $estado) {?>                 
-    <option name="select_nameEstado" value ="<?php echo $estado["IDESTADO"];?>"><?php echo $estado["NOMBRE"];?></option>
-    <?php  } ?>
-    </select>   
-    </td>
-    </tr>
-
-     <!--Resultados Encargado-->
-     <tr>
-     <td>Encargado</td>
-      <td>
-       <select name="select_Encargado"" id="">
-       <?php foreach($empleados as $empleado) {?>
-       <option name="select_Encargado" value="<?php  echo $empleado["IDEMPLEADO"]; ?>"><?php  echo $empleado["NOMBRE"]; ?></option>
-       <?php }?>
-       </select>
-      </td>
-      </tr>
-
-    <input type="hidden" name="ID_RE" value="<?php echo $id;?>">
-    <input type="hidden" name="ID_fkrequ" value="<?php echo $fkre;?>">
-    <?php }?>
-
-    <td><input type="submit" value="Editar Requerimiento"></td>
-    <td><a href="mostrarrequerimineto.php">Volver</a></td>
-    </table>
-    </form>
-  
-</center>
-
+    <h1 class="title-home">Editar Requerimiento</h1>
+     <div class="home">
+       <div class="table_re">
+         <form class="hijo" action="vista_editar_reque.php" method="post">
+           <?php foreach($resultados as $resultado) {?>
+            <select class="noinput"  name="select_nameEstado" id="">
+             <option value="">Estado</option>    
+             <?php foreach($estados as $estado) {?>             
+               <option name="select_nameEstado" value ="<?php echo $estado["IDESTADO"];?>"><?php echo $estado["NOMBRE"];?></option>
+              <?php  } ?>
+             </select>  
+            <?php }?>
+            <select class="noinput" name="select_Encargado"" id="">
+              <option value="">Encargado</option>
+              <?php foreach($empleados as $empleado) {?>
+             <option name="select_Encargado" value="<?php  echo $empleado["IDEMPLEADO"]; ?>"><?php  echo $empleado["NOMBRE"]; ?></option>
+            <?php }?>
+           </select>
+           <input  type="hidden" name="ID_RE" value="<?php echo $id;?>">
+           <input type="hidden" name="ID_fkrequ" value="<?php echo $fkre;?>">
+           
+           <input class="botones" type="submit" value="Editar Requerimiento">
+           <a class="botones" href="mostrarrequerimineto.php">Volver</a>
+         </form>
+       </div>
+     </div>
 </body>
 </html>

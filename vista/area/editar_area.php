@@ -32,36 +32,24 @@ include '../../controlador/controlarea.php';
     <title>Área</title>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
+<?php include("../../header.php");?>
 <body>
-    <center>
-        <form action="vista_editar_areas.php" method="post">
-           <table>
-        <?php foreach($rs as $r) {?>
-           <input type="hidden" name="txtID" value="<?php echo $r['IDAREA']; ?>" title = "Ingrese un Código para el área" required> 
-            <tr>
-                <td>Nombre Área:</td>
-                
-                <td><input type="text" name="txtnameArea" id="" value="<?php echo $r['NOMBRE']; ?>" title ="ingrese un área" required></td>
-            </tr>
-            <?php $id_li = $r['FKEMPLE'];  } ?>
-            <tr>
-            <td>Nombre Lider Área</td>
-             <td>
-             <select  name="select_nameArea" id="">    
-             <?php foreach($empleados as $empleado) {?>                 
-            <option name="select_nameArea" value ="<?php echo $empleado["IDEMPLEADO"];?>"><?php echo $empleado["NOMBRE"];?></option>     
-              <!-- <input type="hidden" name="txtID" value="<?php echo $empleado['IDEMPLEADO']?>">  -->
-              <?php  } ?>
-              </select>   
-             </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><input type="submit" value="Editar Área"></td>
-            </tr
-           </table>
-        </form>
-       
-    </center>
+    <h1 class="title-home" >Editar Área</h1>
+     <div class="home">
+         <div class="table_re">
+             <form class="hijo" action="vista_editar_areas.php" method="post">
+              <?php foreach($rs as $r) {?>
+              <input  class="input" type="text" name="txtnameArea" id="" value="<?php echo $r['NOMBRE']; ?>" title ="ingrese un área" required>
+              <select  class="noinput" name="select_nameArea" id="">
+                  <option value="">Lider Área</option>
+                <?php foreach($empleados as $empleado) {?>                 
+                <option name="select_nameArea" value ="<?php echo $empleado["IDEMPLEADO"];?>"><?php echo $empleado["NOMBRE"];?></option>     
+                <?php  } ?>
+              </select> 
+              <?php }?>
+              <input type="submit" value="Editar Área" class="botones">
+             </form>
+         </div>
+     </div>
 </body>
 </html>

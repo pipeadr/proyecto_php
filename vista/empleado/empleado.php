@@ -64,7 +64,8 @@ $db->cerrarBd();
     <title>Empleados</title>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
-<body>
+<?php include("../../header.php");?>
+<body class="body">
      <h1 class="title-home">Empleados</h1>
      <div class="table_re">
      <table class ="tabla_empleados">
@@ -147,7 +148,7 @@ $db->cerrarBd();
               <input class="botones"  type="reset">
               <input class="botones" type="submit" value="Ingresar Empleado">
               <a class="botones" href="http://localhost/proyecto_php/vista/login/admin.php">Volver</a>
-            </form>
+            </form> 
            
       </div>
     <!-- fin insert -->

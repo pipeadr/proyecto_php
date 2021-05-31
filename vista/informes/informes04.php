@@ -58,27 +58,27 @@ $a = $_SESSION['Usuarios'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe #3</title>
+    <title>Informe #4</title>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <?php include("../../header.php");?>
 <body>
-  <h1>Informe  #3</h1>
-    <form action="informes04.php" method="post">
-      <!-- <input type="date" name="d" id=""> -->
-      <input type="datetime-local" name="fechaInicial" id="">
-      <input type="datetime-local" name="fechaFinal" id="">
-      <input type="submit" value="Enviar">
+  <h1 class="title-home">Informe  #4</h1>
+   <div class="home">
+   <form action="informes04.php" method="post">
+      <input type="datetime-local" name="fechaInicial" id="" class="input" title="Fecha Inicial">
+      <input type="datetime-local" name="fechaFinal" id="" class="input" title="Fecha Final">
+      <input type="submit" value="Enviar" class="botones">
+      <a class="botones" href="">Volver</a>
     </form>
-  <br>
-  <br>
+   </div>
   <?php
     if(isset($informes)) {  
         ?>
-    <h2>Resultado Busqueda</h2>
+    <h2 class="sub-title-home">Resultado Busqueda</h2>
     <?php 
       if($informes == null) {
-      echo "<h2>No hay resultado para esas fechas</h2>";
+      echo "<h2 class = 'sub-title-home'>No hay resultado para esas fechas</h2>";
     } else {?>
       <div class="table_re">
      <table class ="tabla_empleados">
@@ -113,7 +113,6 @@ $a = $_SESSION['Usuarios'];
  <?php     
     }
   ?>
-       <br>
-     <a class="botones" href="informes.php">Volver</a>
+      
 </body>
 </html>

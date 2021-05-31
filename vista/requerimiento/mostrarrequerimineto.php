@@ -60,8 +60,8 @@ $dba->cerrarBd();
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-<center>
-     <h1>Requerimientos</h1>
+<?php include("../../header.php");?>
+     <h1 class="title-home">Requerimientos</h1>
      <div class="table_re">
      <table class ="tabla_empleados">
      <thead>
@@ -105,8 +105,11 @@ $dba->cerrarBd();
     </td>
      </tr>
       <?php }?>
-  
+      
      </table>
+     <div class="table_re">
+     <a class="botones" href="http://localhost/proyecto_php/vista/login/admin.php">Volver</a>
+     </div>
      
 </body>
 <script src="https://kit.fontawesome.com/176c817b83.js" crossorigin="anonymous"></script>

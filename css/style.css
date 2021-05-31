@@ -298,3 +298,99 @@ table.tabla_empleados tr {
     display: inline-block;
     cursor: pointer;      
   }
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    color: #90EE90;
+}
+header.header input[type="checkbox"], 
+header.header .fa-bars,
+header.header .fa-times {
+    display: none;
+}
+div.home--form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 80%;
+}
+/*Celulares*/
+/**Media Query*/
+@media (max-width: 500px) {
+    div.home
+    {
+        padding: 2.2rem;
+        border: 0px;
+        /* width: 80%; */
+    }
+    .header--nav {
+        width: 100%;
+    }
+    .header--nav__ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    /*Menu hamburguesa*/
+    header.header input[type="checkbox"], 
+    header.header .fa-bars,
+    header.header .fa-times {
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        right: 0px;
+        top: 0px;
+        width: 4.8rem;
+        height: 4.8rem;
+    }
+    header.header .fa-bars,
+    header.header .fa-times {
+        pointer-events: none;
+        font-size: 4.8rem;
+        color: #90EE90;
+    }
+    header.header input[type="checkbox"] {
+        opacity: 0;
+    }
+    header.header nav {
+        display: none;
+    }
+    header.header input:checked ~ nav {
+        display: block;
+    }
+    header.header input:checked ~ .fa-bars {
+    display: none;
+    }
+    header.header input:not(:checked) ~ .fa-times {
+        display: none;
+    }
+    /*Formularios*/
+    .noinput {
+        margin-bottom: 2rem;
+    }
+    .file-select {
+        margin-bottom: 2rem;
+    }
+    table.tabla_empleados {
+        display: block;
+        overflow-x: auto;
+        /* text-align: center;
+        border-collapse: collapse; */
+        /* border: 1px solid #90EE90; */
+    }
+    body.body,
+    div.home {
+        overflow-x: hidden;
+    }
+    /*Login*/
+    .form--login {
+        /* display: flex;
+        flex-direction: column;
+        width: 25%;
+        margin: 2rem auto;
+        padding: 6rem;
+        border: 1px solid #90EE90;
+        border-radius: 10%; */
+        width: 80%;
+        padding: 5rem;
+    }
+}

@@ -83,7 +83,7 @@ foreach($Contabilidades as $Contabilida) {
 <?php include("../../header.php");?>
 <body>
 <center>
-     <h1>Informe #1</h1>
+     <h1 class="title-home">Informe #1</h1>
      <div class="table_re">
      <table class ="tabla_empleados">
      <thead>
@@ -110,9 +110,10 @@ foreach($Contabilidades as $Contabilida) {
      </tr>
       <?php }?>
      </table>
-     <br>
-     <br>
-     <a class="botones" href="informes.php">Volver</a>
+     <div class="table_re">
+       <a class="botones" href="informes.php">Volver</a>
+     </div>
+     
      
 </body>
 <script src="https://kit.fontawesome.com/176c817b83.js" crossorigin="anonymous"></script>
