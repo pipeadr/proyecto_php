@@ -4,11 +4,28 @@ include '../../modelo/empleado/empleado.php';
 include '../../controlador/controlconexion.php';
 include '../../controlador/controladorcargo_por_empleado.php';
 include '../../modelo/cargo/cargo_por_empleado.php';
+include  '../../config/congif.php';
 
 $ID = $_POST['txtID'];
 $name = $_POST['txtNombre'];
 
-
+$db = new controlconexion();
+$db->abrirBd($GLOBALS['serv'],$GLOBALS['usua'],$GLOBALS['pass'],$GLOBALS['bdat']);
+$comandoSql = "SELECT COUNT(*) AS conteo FROM empleado WHERE IDEMPLEADO = '".$ID."'";
+$rs_id = $db->ejecutarSelect($comandoSql);
+// $registros = $rs_id->fetch_all(MYSQLI_ASSOC);
+$registros = $rs_id->fetch_array(MYSQLI_BOTH);
+// $registro = $recordSet->fetch_array(MYSQLI_BOTH);
+$db->cerrarBd();
+$conteo_id = $registros["conteo"];
+if($conteo_id >= 1) {
+  ?>
+  <script type="text/javascript">
+alert("El Usuario que usted va registrar ya existe en la plataforma, por favor revise la informacipon que esta digitando");
+window.location='empleado.php'; 
+</script>
+<?php  
+} else {
 
 /* Código para Archivos */
 //print_r($_FILES);
@@ -148,6 +165,7 @@ if($r) {
    } 
 } else { //else del cargo ppl
   $rptafinal = "algo salió mal"; 
+}
 }
 ?>
 <script type="text/javascript">
